@@ -1,8 +1,8 @@
 {
-  "name": "paystack-node",
+  "name": "paystack-sdk",
   "version": "1.0.0",
   "description": "Paystack SDK written in Typescript",
-  "main": "index.ts",
+  "main": "index.js",
   "author": "Koderant",
   "license": "MIT",
   "private": false,
