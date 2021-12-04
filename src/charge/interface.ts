@@ -1,7 +1,10 @@
 export interface CreateCharge {
   email: string;
   amount: string;
-  bank?: Record<string, unknown>;
+  bank?: {
+    code: string;
+    account_number: string;
+  };
   authorization_code?: string;
   pin?: string;
   metadata?: Record<string, unknown>;
@@ -9,19 +12,36 @@ export interface CreateCharge {
   ussd?: string;
   mobile_money?: string;
   device_id?: string;
+  birthday?: string;
 }
 
-enum Status {
-  success,
-  pay_offline,
-  send_birthday,
-  open_uri,
-  failed,
-  send_pin,
+export interface Submit {
+  reference: string;
+}
+export interface SubmitPIN extends Submit {
+  pin: string;
+}
+export interface SubmitOTP extends Submit {
+  otp: string;
+}
+
+export interface SubmitPhone extends Submit {
+  phone: string;
+}
+
+export interface SubmitBirthday extends Submit {
+  birthday: Date;
+}
+
+export interface SubmitAddress extends Submit {
+  address: string;
+  city: string;
+  state: string;
+  zipcode: string;
 }
 
 enum Channel {
-  card,
+  card = 'card',
 }
 
 export interface ChargeCreated {
@@ -44,7 +64,7 @@ interface ChargeCreatedOk {
   amount: number;
   currency: string;
   transaction_date: string;
-  status: Status;
+  status: string;
   reference: string;
   domain: string;
   metadata: Record<string, unknown>;
@@ -85,7 +105,7 @@ interface ChargeCreatedResponseWithMobileMoney {
   message: string;
   paid_at: Date;
   reference: string;
-  status: Status;
+  status: string;
   transaction_date: Date;
   authorization: Authorization;
   customer: Customer;
@@ -93,14 +113,14 @@ interface ChargeCreatedResponseWithMobileMoney {
 
 interface ChargeCreatedResponseWithUSSD {
   reference: string;
-  status: Status;
+  status: string;
   display_text: string;
   ussd_code: string;
 }
 
 interface ChargeCreatedResponseWithBirthday {
   reference: string;
-  status: Status;
+  status: string;
   display_text: string;
 }
 
@@ -110,7 +130,7 @@ interface ChargeCreatedResponseWithPhone
 interface ChargeCreatedResponseWithBankAuth {
   refernce: string;
   uri: string;
-  status: Status;
+  status: string;
 }
 
 interface ChargeCreatedResponseWithPin
@@ -124,7 +144,7 @@ interface ChargeCreatedResponseWithOTP
 interface ChargeFailed {
   refernce: string;
   message: string;
-  status: Status;
+  status: string;
 }
 
 interface Authorization {
