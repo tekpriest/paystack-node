@@ -1,3 +1,9 @@
+#### 1.0.4 (2021-12-06)
+
+##### Other Changes
+
+* **plan:**  added methods for plan ([d68ff371](https://github.com/en1tan/paystack-node/commit/d68ff371a90b363ea087bbd5d7cfbece14ca216b))
+
 #### 1.0.3 (2021-12-06)
 
 ##### Other Changes
