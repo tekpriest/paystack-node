@@ -37,11 +37,7 @@ export interface SubmitAddress extends Submit {
   address: string;
   city: string;
   state: string;
-  zipcode: string;
-}
-
-enum Channel {
-  card = 'card',
+  zip_code: string;
 }
 
 export interface ChargeCreated {
@@ -70,7 +66,7 @@ interface ChargeCreatedOk {
   metadata: Record<string, unknown>;
   gateway_response: string;
   message: string;
-  channel: Channel;
+  channel: string;
   ip_address: string;
   log: any | null;
   fees: number;
@@ -94,7 +90,7 @@ interface ChargeCreatedResponseWithAddress {
 
 interface ChargeCreatedResponseWithMobileMoney {
   amount: number;
-  channel: Channel;
+  channel: string;
   created_at: Date;
   currency: string;
   domain: string;
@@ -147,12 +143,13 @@ interface ChargeFailed {
   status: string;
 }
 
-interface Authorization {
+export interface Authorization {
   authorization_code: string;
+  card_type: string;
   bank: string;
   bin: string;
   brand: string;
-  channel: Channel;
+  channel: string;
   country_code: string;
   exp_month: string;
   exp_year: string;
@@ -162,7 +159,7 @@ interface Authorization {
   account_name: string;
 }
 
-interface Customer {
+export interface Customer {
   customer_code: string;
   email: string;
   id: number;

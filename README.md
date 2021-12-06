@@ -13,28 +13,19 @@ For NPM
 ### Usage
 For Typescript
 ```
-import { Paystack } from 'paystack-sdk'
+import Paystack from 'paystack-sdk';
 
 const paystack = new Paystack("secret_key);
 ```
 
 For Javscript
 ```
-const Paystack = new Paystack("secret_key")
+const Paystack = require('paystack-sdk');
+const paystack = new Paystack("secret_key");
 ```
 
-### Example Request
 All methods use promise meaning you can either use the `async...await` or `then...catch` or `try...catch`
 
-### Charge
-#### Create Charge
-```
-paystack.charge.create({
-  email:"johndoe@example.com",
-  amount: 1000
-}).then((charge) => {
-  console.log(charge)
-}).catch((error) => {
-  console.error(error)
-})
-```
+### Available Docs
+- [Charge](https://github.com/en1tan/paystack-node/blob/main/src/charge/README.md)
+- [Transaction](https://github.com/en1tan/paystack-node/blob/main/src/transaction/README.md)

@@ -17,6 +17,12 @@ interface BadRequest {
 
 export interface ICharge {
   create(data: CreateCharge): Promise<ChargeCreated | BadRequest>;
+  submitPIN(data: SubmitPIN): Promise<ChargeCreated | BadRequest>;
+  submitOTP(data: SubmitOTP): Promise<ChargeCreated | BadRequest>;
+  submitPhone(data: SubmitPhone): Promise<ChargeCreated | BadRequest>;
+  submitBirthday(data: SubmitBirthday): Promise<ChargeCreated | BadRequest>;
+  submitAddress(data: SubmitAddress): Promise<ChargeCreated | BadRequest>;
+  checkPending(reference: string): Promise<ChargeCreated | BadRequest>;
 }
 
 export class Charge implements ICharge {
@@ -25,27 +31,24 @@ export class Charge implements ICharge {
     this.http = http;
   }
   async create(data: CreateCharge): Promise<ChargeCreated | BadRequest> {
-    const response = await this.http.post<ChargeCreated | BadRequest>(
-      '/charge',
-      JSON.stringify(data),
-    );
-    return response.data;
+    const response = await this.http.post('/charge', JSON.stringify(data));
+    return JSON.parse(response.data);
   }
 
   async submitPIN(data: SubmitPIN): Promise<ChargeCreated | BadRequest> {
-    const response = await this.http.post<ChargeCreated | BadRequest>(
+    const response = await this.http.post(
       '/charge/submit_pin',
       JSON.stringify(data),
     );
-    return response.data;
+    return JSON.parse(response.data);
   }
 
   async submitOTP(data: SubmitOTP): Promise<ChargeCreated | BadRequest> {
-    const response = await this.http.post<ChargeCreated | BadRequest>(
+    const response = await this.http.post(
       '/charge/submit_otp',
       JSON.stringify(data),
     );
-    return response.data;
+    return JSON.parse(response.data);
   }
 
   async submitPhone(data: SubmitPhone): Promise<ChargeCreated | BadRequest> {
@@ -53,14 +56,17 @@ export class Charge implements ICharge {
       '/charge/submit_phone',
       JSON.stringify(data),
     );
-    return response.data;
+    return JSON.parse(response.data);
   }
 
   async submitBirthday(
     data: SubmitBirthday,
   ): Promise<ChargeCreated | BadRequest> {
-    const response = await this.http.post('/charge/submit_birthday');
-    return response.data;
+    const response = await this.http.post(
+      '/charge/submit_birthday',
+      JSON.stringify(data),
+    );
+    return JSON.parse(response.data);
   }
 
   async submitAddress(
@@ -70,15 +76,13 @@ export class Charge implements ICharge {
       '/charge/submit_address',
       JSON.stringify(data),
     );
-    return response.data;
+    return JSON.parse(response.data);
   }
 
-  async checkPendingCharge(
-    reference: string,
-  ): Promise<ChargeCreated | BadRequest> {
+  async checkPending(reference: string): Promise<ChargeCreated | BadRequest> {
     const response = await this.http.get('/charge/submit_address', {
       params: { reference },
     });
-    return response.data;
+    return JSON.parse(response.data);
   }
 }
