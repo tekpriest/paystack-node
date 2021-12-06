@@ -54,7 +54,7 @@ export class Transaction implements ITransaction {
     queryParams: ListTransactionQueryParams,
   ): Promise<TransactionResponse | BadRequest> {
     const response = await this.http.get('/transaction', {
-      params: { queryParams },
+      params: { ...queryParams },
     });
     return JSON.parse(response.data);
   }

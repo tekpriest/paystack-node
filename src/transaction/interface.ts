@@ -121,8 +121,7 @@ interface TransactionData {
   required_amount: number;
 }
 
-interface Transactions extends TransactionData {}
-[];
+interface Transactions extends TransactionData {}[];
 
 export interface ListTransactionQueryParams {
   /**
