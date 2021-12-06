@@ -1,4 +1,4 @@
 {
   "extends": ["tslint:recommended", "tslint-config-prettier"],
-  "rules": { "no-empty-interface": false }
+  "rules": { "no-empty-interface": false, "no-unused-expression": false }
 }
