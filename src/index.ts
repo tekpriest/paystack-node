@@ -3,5 +3,4 @@
 
 import Paystack from './paystack';
 
-// @ts-ignore
-module.export = Paystack;
+module.exports = Paystack;
