@@ -4,4 +4,4 @@
 import Paystack from './paystack';
 
 // @ts-ignore
-export = Paystack;
+module.export = Paystack;
