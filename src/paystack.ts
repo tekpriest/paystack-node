@@ -12,7 +12,7 @@ export default class Paystack {
   private readonly http: Axios;
   public charge: ICharge;
   public transaction: ITransaction;
-  public plan: IPlan;
+  public plan: Plan;
   constructor(public readonly key: string) {
     this.http = new Axios({
       baseURL: 'https://api.paystack.co',
