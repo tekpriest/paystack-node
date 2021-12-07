@@ -2,12 +2,14 @@
   "compilerOptions": {
     "experimentalDecorators": true,
     "target": "ESNext",                                     /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
-    "module": "commonjs",                                /* Specify what module code is generated. */
+    "module": "es2022",                                /* Specify what module code is generated. */
+    "moduleResolution": "Node",
     "declaration": true,                              /* Generate .d.ts files from TypeScript and JavaScript files in your project. */
     "outDir": "./dist",                                   /* Specify an output folder for all emitted files. */
     "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables `allowSyntheticDefaultImports` for type compatibility. */
     "strict": true,                                      /* Enable all strict type-checking options. */
+    "types": ["node"],
   },
-  "include": ["src"],
+  "include": ["src/**/*.ts"],
   "exclude": ["node_modules","**/__tests__/*"]
 }

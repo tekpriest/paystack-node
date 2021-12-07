@@ -31,7 +31,7 @@
     "axios": "^0.24.0"
   },
   "files": [
-    "dist/**.*"
+    "dist/**/*"
   ],
   "keywords": [
     "Paystack",
@@ -40,5 +40,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/en1tan/paystack-node.git"
-  }
+  },
+  "type": "module"
 }
