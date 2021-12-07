@@ -38,7 +38,7 @@ export interface CreatePlan {
   currency?: string;
   /**
    * Number of invoices to raise during subscription to this plan.
-   * Can be overriden by specifying an `invoice_limit` while subscribing
+   * Can be overridden by specifying an `invoice_limit` while subscribing
    */
   invoice_limit?: number;
 }
