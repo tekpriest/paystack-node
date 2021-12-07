@@ -1,5 +1,5 @@
 import { Axios } from 'axios';
-import { Charge, ICharge } from './charge/charge';
+import { Charge, ICharge } from './charge';
 import { IPlan, Plan } from './plan/plan';
 import { ITransaction, Transaction } from './transaction/transaction';
 
@@ -9,7 +9,7 @@ import { ITransaction, Transaction } from './transaction/transaction';
  */
 
 export default class Paystack {
-  private http: Axios;
+  private readonly http: Axios;
   public charge: ICharge;
   public transaction: ITransaction;
   public plan: IPlan;
