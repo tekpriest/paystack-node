@@ -1,7 +1,7 @@
 import { Axios } from 'axios';
-import { Charge} from './charge';
-import { Plan } from "./plan";
-import { Transaction } from "./transaction";
+import { Charge } from './charge';
+import { Plan } from './plan';
+import { Transaction } from './transaction';
 
 /**
  * Paystack SDK
