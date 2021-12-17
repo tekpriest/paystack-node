@@ -12,19 +12,13 @@ interface BadRequest {
   data: null;
 }
 
-export interface IPlan {
-  create(data: CreatePlan): Promise<PlanResponse | BadRequest>;
-  list(queryParams?: ListPlanQueryParams): Promise<PlanResponse | BadRequest>;
-  fetch(id: string): Promise<PlanResponse | BadRequest>;
-  update(id: string, data: UpdatePlan): Promise<PlanResponse | BadRequest>;
-}
 /**
  * ## Plans
  * The Plans API allows you create and manage installment
  * payment options on your integration
  * @class Plan
  */
-export class Plan implements IPlan {
+export class Plan {
   private http: Axios;
   constructor(http: Axios) {
     this.http = http;
@@ -36,8 +30,8 @@ export class Plan implements IPlan {
    * @returns {Promise<PlanResponse | BadRequest>}
    */
   async create(data: CreatePlan): Promise<PlanResponse | BadRequest> {
-    const response = await this.http.post('/plan', JSON.stringify(data));
-    return JSON.parse(response.data);
+    const response = await this.http.post('/plan', data);
+    return response.data;
   }
   /**
    * ### List Plans
