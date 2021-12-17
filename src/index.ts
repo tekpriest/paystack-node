@@ -1,3 +1,1 @@
-import { Paystack } from './paystack';
-
-exports = Paystack;
+export { Paystack } from './paystack';
