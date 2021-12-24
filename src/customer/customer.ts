@@ -58,8 +58,8 @@ export class Customer {
    * Get details of a customer on your integration
    * @param {String} email_or_code
    */
-  async fetch(email_code: string): Promise<CustomerData | BadRequest> {
-    const response = await this.http.get(`/customer/${email_code}`);
+  async fetch(emailCode: string): Promise<CustomerData | BadRequest> {
+    const response = await this.http.get(`/customer/${emailCode}`);
     return JSON.parse(response.data);
   }
 
@@ -85,11 +85,11 @@ export class Customer {
    * @param {ValidateCustomer} data
    */
   async validate(
-    customer_code: string,
+    customerCode: string,
     data: ValidateCustomer,
   ): Promise<Response | BadRequest> {
     const response = await this.http.post(
-      `/customer/${customer_code}/identification`,
+      `/customer/${customerCode}/identification`,
       JSON.stringify(data),
     );
     return JSON.parse(response.data);
@@ -113,6 +113,7 @@ export class Customer {
    * Deactivate an authorization when the card needs to be forgotten
    * @param {String} authorizaion_code
    */
+   // @ts-ignore: variable-name
   async deactivateAutorization(authorizaion_code: string): Promise<Response> {
     const response = await this.http.post(
       '/customer/deactivate_authorization',
