@@ -31,7 +31,7 @@ const paystack = new Paystack("secret_key");
 
 All methods use promise meaning you can either use the `async...await` or `then...catch` or `try...catch`
 
-### Available Endpoints
+### Available Functions
 
 - [Charge](https://github.com/en1tan/paystack-node/blob/main/src/charge/README.md)
 - [Transaction](https://github.com/en1tan/paystack-node/blob/main/src/transaction/README.md)
