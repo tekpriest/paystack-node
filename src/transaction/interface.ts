@@ -92,7 +92,7 @@ interface TransactionInitializedOk {
   reference: string;
 }
 
-interface TransactionData {
+export interface TransactionData {
   amount: number;
   currency: string;
   transaction_date: Date;
@@ -101,7 +101,7 @@ interface TransactionData {
   domain: string;
   metadata: number;
   gateway_response: string;
-  message?: null;
+  message?: any;
   channel: string;
   ip_address: string;
   log: {
@@ -309,3 +309,5 @@ export interface PartialDebit {
    */
   at_least: string;
 }
+
+export interface Subscription {}

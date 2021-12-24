@@ -30,8 +30,8 @@ export class Plan {
    * @returns {Promise<PlanResponse | BadRequest>}
    */
   async create(data: CreatePlan): Promise<PlanResponse | BadRequest> {
-    const response = await this.http.post('/plan', data);
-    return response.data;
+    const response = await this.http.post('/plan', JSON.stringify(data));
+    return JSON.parse(response.data);
   }
   /**
    * ### List Plans
