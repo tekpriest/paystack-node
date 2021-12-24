@@ -108,16 +108,15 @@ export class Customer {
     return JSON.parse(response.data);
   }
 
-  // @ts-ignore: variable-name
   /**
    * ## Deactivate Authorization
    * Deactivate an authorization when the card needs to be forgotten
    * @param {String} authorizaion_code
    */
-  async deactivateAutorization(authorizaion_code: string): Promise<Response> {
+  async deactivateAutorization(authorizationCode: string): Promise<Response> {
     const response = await this.http.post(
       '/customer/deactivate_authorization',
-      JSON.stringify({ authorizaion_code }),
+      JSON.stringify({ authorizaion_code: authorizationCode }),
     );
     return JSON.parse(response.data);
   }
