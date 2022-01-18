@@ -40,12 +40,12 @@ export interface TransferInitiated extends Response {
 
 export interface InitiateBulkTransfer {
   /**
-  * Where should we transfer from? Only `balance` for now
-  */
+   * Where should we transfer from? Only `balance` for now
+   */
   source: string;
   /**
-  * A list of transfer object. Each object should contain `amount`, `recipient`, and `reference`
-  */
+   * A list of transfer object. Each object should contain `amount`, `recipient`, and `reference`
+   */
   transfers: { amount: number; recipient: string; reference: string }[];
 }
 
