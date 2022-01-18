@@ -41,12 +41,12 @@ export class Transfer {
    * Finalize an initiated transfer
    */
   async finalize(
-    transfer_code: string,
+    transferCode: string,
     otp: string,
   ): Promise<FinalizeTransfer | BadRequest> {
     return await this.http.post<FinalizeTransfer | BadRequest, any>(
       '/transfer/finalize_transfer',
-      JSON.stringify({ transfer_code, otp }),
+      JSON.stringify({ transfer_code: transferCode, otp }),
     );
   }
 
@@ -67,9 +67,9 @@ export class Transfer {
     });
   }
 
-  async fetch(id_or_code: string): Promise<FetchTransfer | BadRequest> {
+  async fetch(idOrCode: string): Promise<FetchTransfer | BadRequest> {
     return await this.http.get<FetchTransfer | BadRequest, any>(
-      `/transfer/${id_or_code}`,
+      `/transfer/${idOrCode}`,
     );
   }
 
