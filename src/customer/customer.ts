@@ -1,12 +1,10 @@
 import { Axios } from 'axios';
-import { Meta } from '../transaction';
+import { ListCustomersResponse } from '.';
 import {
   CreateCustomer,
   CustomerCreated,
   CustomerData,
   ListCustomerQueryParams,
-  ListCustomers,
-  Response,
   SetRiskAction,
   UpdateCustomer,
   ValidateCustomer,
@@ -35,8 +33,10 @@ export class Customer {
    * @param {CreateCustomer} data
    */
   async create(data: CreateCustomer): Promise<CustomerCreated | BadRequest> {
-    const response = await this.http.post('/customer', JSON.stringify(data));
-    return JSON.parse(response.data);
+    return await this.http.post<CustomerCreated | BadRequest, any>(
+      '/customer',
+      JSON.stringify(data),
+    );
   }
 
   /**
@@ -46,11 +46,13 @@ export class Customer {
    */
   async list(
     queryParams?: ListCustomerQueryParams,
-  ): Promise<(Response & ListCustomers[] & Meta) | BadRequest> {
-    const response = await this.http.get('/customer', {
-      params: { ...queryParams },
-    });
-    return JSON.parse(response.data);
+  ): Promise<ListCustomersResponse | BadRequest> {
+    return await this.http.get<ListCustomersResponse | BadRequest, any>(
+      '/customer',
+      {
+        params: { ...queryParams },
+      },
+    );
   }
 
   /**
@@ -59,8 +61,9 @@ export class Customer {
    * @param {String} email_or_code
    */
   async fetch(emailCode: string): Promise<CustomerData | BadRequest> {
-    const response = await this.http.get(`/customer/${emailCode}`);
-    return JSON.parse(response.data);
+    return await this.http.get<CustomerData | BadRequest, any>(
+      `/customer/${emailCode}`,
+    );
   }
 
   /**
@@ -71,11 +74,10 @@ export class Customer {
     code: string,
     data: UpdateCustomer,
   ): Promise<CustomerData | BadRequest> {
-    const response = await this.http.put(
+    return await this.http.put<CustomerData | BadRequest, any>(
       `/customer/${code}`,
       JSON.stringify(data),
     );
-    return JSON.parse(response.data);
   }
 
   /**
@@ -88,11 +90,10 @@ export class Customer {
     customerCode: string,
     data: ValidateCustomer,
   ): Promise<Response | BadRequest> {
-    const response = await this.http.post(
+    return await this.http.post<Response | BadRequest, any>(
       `/customer/${customerCode}/identification`,
       JSON.stringify(data),
     );
-    return JSON.parse(response.data);
   }
 
   /**
@@ -101,11 +102,10 @@ export class Customer {
    * @param {SetRiskAction} data
    */
   async setRiskAction(data: SetRiskAction): Promise<CustomerData | BadRequest> {
-    const response = await this.http.post(
+    return await this.http.post<CustomerData | BadRequest, any>(
       '/customer/set_risk_action',
       JSON.stringify(data),
     );
-    return JSON.parse(response.data);
   }
 
   /**
@@ -114,10 +114,10 @@ export class Customer {
    * @param {String} authorizaion_code
    */
   async deactivateAutorization(authorizationCode: string): Promise<Response> {
-    const response = await this.http.post(
+    const response = await this.http.post<Response, any>(
       '/customer/deactivate_authorization',
       JSON.stringify({ authorizaion_code: authorizationCode }),
     );
-    return JSON.parse(response.data);
+    return response;
   }
 }

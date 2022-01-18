@@ -57,12 +57,12 @@ interface PlanCreated {
   integration: number;
   domain: string;
   plan_code: string;
-  description: any;
+  description: unknown;
   send_invoices: boolean;
   send_sms: boolean;
   hosted_page: boolean;
-  hosted_page_url: any;
-  hosted_page_summary: any;
+  hosted_page_url: unknown;
+  hosted_page_summary: unknown;
   currency: string;
   migrate: boolean;
   is_archived: boolean;
@@ -78,14 +78,12 @@ interface Plan extends PlanCreated {
   subscriptions_count: number;
   active_subscriptions_count: number;
   total_revenue: number;
-  subscribers: Subscribers[];
+  subscribers: Subscriber[];
 }
 interface Plans extends PlanCreated {
   subscriptions: Subscription[];
 }
 [];
-
-interface Subscribers {}
 
 interface Subscription {
   customer: number;
@@ -99,10 +97,10 @@ interface Subscription {
   subscription_code: string;
   email_token: string;
   authorization: Authorization;
-  easy_cron_id: any;
+  easy_cron_id: unknown;
   cron_expression: string;
   next_payment_date: Date;
-  open_invoice: any;
+  open_invoice: unknown;
   id: number;
   createdAt: Date;
   updatedAt: Date;
@@ -173,4 +171,25 @@ export interface UpdatePlan {
    * Can be overriden by specifying an `invoice_limit` while subscribing
    */
   invoice_limit?: number;
+}
+
+export interface IPlan {
+  domain: string;
+  name: string;
+  plan_code: string;
+  description: string;
+  amount: number;
+  interval: string;
+  send_invoices: boolean;
+  send_sms: boolean;
+  hosted_page: boolean;
+  hosted_page_url: string;
+  hosted_page_summary: string;
+  currency: string;
+  migrate: boolean;
+  id: number;
+  integration: number;
+  is_archived: boolean;
+  createdAt: Date;
+  updatedAt: Date;
 }

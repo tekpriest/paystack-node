@@ -10,6 +10,7 @@
     "strict": true,                                      /* Enable all strict type-checking options. */
     "checkJs": true,
     "allowSyntheticDefaultImports": true,
+    "strictNullChecks": false,
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules","**/__tests__/*"]

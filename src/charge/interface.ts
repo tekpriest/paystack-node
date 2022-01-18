@@ -1,3 +1,18 @@
+import { Response } from '../transaction';
+
+export type ChargeCreatedResponse =
+  | ChargeCreated
+  | ChargeCreatedWithOTP
+  | ChargeCreatedWithPending
+  | ChargeCreatedWithAddress
+  | ChargeCreatedWithBankAuth
+  | ChargeCreatedWithPin
+  | ChargeCreatedWithPhone
+  | ChargeCreatedWithBirthday
+  | ChargeCreatedWithUSSD
+  | ChargeCreatedWithMobileMoney
+  | ChargeFailed;
+
 export interface CreateCharge {
   email: string;
   amount: string;
@@ -14,133 +29,145 @@ export interface CreateCharge {
   device_id?: string;
   birthday?: string;
 }
-
-export interface Submit {
+export interface SubmitPIN {
   reference: string;
-}
-export interface SubmitPIN extends Submit {
   pin: string;
 }
-export interface SubmitOTP extends Submit {
+export interface SubmitOTP {
+  reference: string;
   otp: string;
 }
 
-export interface SubmitPhone extends Submit {
+export interface SubmitPhone {
+  reference: string;
   phone: string;
 }
 
-export interface SubmitBirthday extends Submit {
+export interface SubmitBirthday {
+  reference: string;
   birthday: Date;
 }
 
-export interface SubmitAddress extends Submit {
+export interface SubmitAddress {
+  reference: string;
   address: string;
   city: string;
   state: string;
   zip_code: string;
 }
 
-export interface ChargeCreated {
-  status: boolean;
-  message: string;
-  data:
-    | ChargeCreatedOk
-    | ChargeCreatedResponseWithAddress
-    | ChargeCreatedResponseWithPending
-    | ChargeCreatedResponseWithBankAuth
-    | ChargeCreatedResponseWithMobileMoney
-    | ChargeCreatedResponseWithUSSD
-    | ChargeCreatedResponseWithOTP
-    | ChargeCreatedResponseWithPin
-    | ChargeCreatedResponseWithPhone
-    | ChargeFailed;
+export interface ChargeCreated extends Response {
+  data: {
+    amount: number;
+    currency: string;
+    transaction_date: string;
+    status: string;
+    reference: string;
+    domain: string;
+    metadata: Record<string, unknown>;
+    gateway_response: string;
+    message: string;
+    channel: string;
+    ip_address: string;
+    log: unknown;
+    fees: number;
+    authorization: Authorization;
+    customer: Customer;
+    display_text: string;
+    plan: unknown;
+  };
 }
 
-interface ChargeCreatedOk {
-  amount: number;
-  currency: string;
-  transaction_date: string;
-  status: string;
-  reference: string;
-  domain: string;
-  metadata: Record<string, unknown>;
-  gateway_response: string;
-  message: string;
-  channel: string;
-  ip_address: string;
-  log: any | null;
-  fees: number;
-  authorization: Authorization;
-  customer: Customer;
-  display_text: string;
-  plan: string | null;
+interface ChargeCreatedWithPending extends Response {
+  data: {
+    reference: string;
+    status: string;
+  };
 }
 
-interface ChargeCreatedResponseWithPending {
-  reference: string;
-  status: string;
+interface ChargeCreatedWithAddress extends Response {
+  data: {
+    display_text: string;
+    reference: string;
+    status: string;
+    country_code: string;
+  };
 }
 
-interface ChargeCreatedResponseWithAddress {
-  display_text: string;
-  reference: string;
-  status: string;
-  country_code: string;
+interface ChargeCreatedWithMobileMoney extends Response {
+  data: {
+    amount: number;
+    channel: string;
+    created_at: Date;
+    currency: string;
+    domain: string;
+    fees: number;
+    gateway_response: string;
+    id: number;
+    ip_address: string;
+    message: string;
+    paid_at: Date;
+    reference: string;
+    status: string;
+    transaction_date: Date;
+    authorization: Authorization;
+    customer: Customer;
+  };
 }
 
-interface ChargeCreatedResponseWithMobileMoney {
-  amount: number;
-  channel: string;
-  created_at: Date;
-  currency: string;
-  domain: string;
-  fees: number;
-  gateway_response: string;
-  id: number;
-  ip_address: string;
-  message: string;
-  paid_at: Date;
-  reference: string;
-  status: string;
-  transaction_date: Date;
-  authorization: Authorization;
-  customer: Customer;
+interface ChargeCreatedWithUSSD extends Response {
+  data: {
+    reference: string;
+    status: string;
+    display_text: string;
+    ussd_code: string;
+  };
 }
 
-interface ChargeCreatedResponseWithUSSD {
-  reference: string;
-  status: string;
-  display_text: string;
-  ussd_code: string;
+interface ChargeCreatedWithBirthday extends Response {
+  data: {
+    reference: string;
+    status: string;
+    display_text: string;
+  };
 }
 
-interface ChargeCreatedResponseWithBirthday {
-  reference: string;
-  status: string;
-  display_text: string;
+interface ChargeCreatedWithBankAuth extends Response {
+  data: {
+    refernce: string;
+    uri: string;
+    status: string;
+  };
 }
 
-interface ChargeCreatedResponseWithPhone
-  extends ChargeCreatedResponseWithBirthday {}
-
-interface ChargeCreatedResponseWithBankAuth {
-  refernce: string;
-  uri: string;
-  status: string;
+interface ChargeCreatedWithOTP extends Response {
+  data: {
+    refernce: string;
+    status: string;
+    display_text: string;
+  };
 }
 
-interface ChargeCreatedResponseWithPin
-  extends ChargeCreatedResponseWithPending {}
-
-interface ChargeCreatedResponseWithOTP
-  extends ChargeCreatedResponseWithPending {
-  display_text: string;
+interface ChargeCreatedWithPin extends Response {
+  data: {
+    refernce: string;
+    status: string;
+  };
 }
 
-interface ChargeFailed {
-  refernce: string;
-  message: string;
-  status: string;
+interface ChargeCreatedWithPhone extends Response {
+  data: {
+    refernce: string;
+    status: string;
+    display_text: string;
+  };
+}
+interface ChargeFailed extends Response {
+  data: {
+    refernce: string;
+    message: string;
+    status: string;
+  };
 }
 
 export interface Authorization {

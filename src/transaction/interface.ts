@@ -1,4 +1,5 @@
 import { Authorization, Customer } from '../charge';
+import { Meta } from '../interface';
 
 export interface InitializeTransaction {
   /**
@@ -74,81 +75,88 @@ export interface InitializeTransaction {
   bearer?: string;
 }
 
-export interface TransactionResponse {
+export interface Response {
   status: boolean;
   message: string;
-  data:
-    | TransactionInitializedOk
-    | TransactionData
-    | Transactions
-    | Timeline
-    | ExportTransaction;
-  meta?: Meta;
 }
 
-interface TransactionInitializedOk {
-  authorization_url: string;
-  access_code: string;
-  reference: string;
+export interface TransactionInitialized extends Response {
+  data: {
+    authorization_url: string;
+    access_code: string;
+    reference: string;
+  };
 }
 
-export interface TransactionData {
-  amount: number;
-  currency: string;
-  transaction_date: Date;
-  status: string;
-  reference: string;
-  domain: string;
-  metadata: number;
-  gateway_response: string;
-  message?: any;
-  channel: string;
-  ip_address: string;
-  log: {
+export interface TransactionData extends Response {
+  data: {
+    amount: number;
+    currency: string;
+    transaction_date: Date;
+    status: string;
+    reference: string;
+    domain: string;
+    metadata: number;
+    gateway_response: string;
+    message?: string;
+    channel: string;
+    ip_address: string;
+    log: [
+      {
+        time_spent: number;
+        attempt: number;
+        authentication: any;
+        errors: number;
+        success: boolean;
+        mobile: boolean;
+        input: [];
+        channel: string;
+        history: [
+          {
+            type: string;
+            message: string;
+            time: number;
+          },
+        ];
+      },
+    ];
+    fees: number;
+    authorization: Authorization;
+    customer: Customer;
+    pin: string;
+    required_amount: number;
+  };
+}
+
+export interface ListTransactions extends Response {
+  data: TransactionData[];
+  meta: Meta;
+}
+
+export interface Timeline extends Response {
+  data: {
     time_spent: number;
-    attempt: number;
+    attempts: number;
     authentication: any;
     errors: number;
     success: boolean;
     mobile: boolean;
     input: [];
-    channel: any;
-    history: {
-      type: string;
-      message: string;
-      time: number;
-    }[];
+    channel: string;
+    history: [
+      {
+        type: string;
+        message: string;
+        time: number;
+      },
+    ];
   };
-  fees: any;
-  authorization: Authorization;
-  customer: Customer;
-  pin: string;
-  required_amount: number;
 }
 
-interface Transactions extends TransactionData {}
-[];
-
-interface Timeline {
-  time_spent: number;
-  attempts: number;
-  authentication: any;
-  errors: number;
-  success: boolean;
-  mobile: boolean;
-  input: [];
-  channel: string;
-  history: [
-    {
-      type: string;
-      message: string;
-      time: number;
-    },
-  ];
-}
-
-interface ExportTransaction {
-  path: string;
+export interface ExportTransaction extends Response {
+  data: {
+    path: string;
+  };
 }
 
 export interface ListTransactionQueryParams {
@@ -188,14 +196,6 @@ export interface ListTransactionQueryParams {
    * and **cents**, if currency is `ZAR`)
    */
   amount?: number;
-}
-
-export interface Meta {
-  total: number;
-  skipped: number;
-  perPage: number;
-  page: number;
-  pageCount: number;
 }
 
 export interface ChargeAuthorization {
@@ -310,4 +310,13 @@ export interface PartialDebit {
   at_least: string;
 }
 
-export interface Subscription {}
+export interface PartialDebitResponse extends Response {
+  data: Record<string, any>;
+}
+
+export interface CheckAuthorizationResponse extends Response {
+  data: {
+    amount: string;
+    currency: string;
+  };
+}

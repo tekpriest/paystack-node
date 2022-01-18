@@ -5,8 +5,8 @@ export interface CreateCustomer {
   email: string;
   first_name: string;
   last_name: string;
-  phone: string;
-  metadata: Record<string, any>;
+  phone?: string;
+  metadata?: Record<string, any>;
 }
 
 export interface Response {
@@ -15,49 +15,66 @@ export interface Response {
 }
 
 export interface CustomerCreated extends Response {
-  email: string;
-  integration: number;
-  domain: string;
-  customer_code: string;
-  id: number;
-  identified: boolean;
-  identifications: null;
-  createdAt: Date;
-  updatedAt: Date;
+  data: {
+    transactions: TransactionData[];
+    subscriptions: Subscription[];
+    authorizations: Authorization[];
+    first_name: string;
+    last_name: string;
+    email: string;
+    phone: string | null;
+    metadata: Record<string, any> | null;
+    domain: string;
+    customer_code: string;
+    risk_action: string;
+    id: number;
+    integration: number;
+    createdAt: Date;
+    updatedAt: Date;
+    identified: boolean;
+    identifications: null;
+  };
 }
 
 export interface CustomerData extends Response {
-  integration: number;
-  first_name: string;
-  last_name: string;
-  email: string;
-  phone: string | null;
-  dedicated_account: DedicatedAccount | null;
-  identified: boolean;
-  identifications: CustomerIdentification[] | null;
-  metadata: Record<string, any> | null;
-  domain: string;
-  customer_code: string;
-  id: string;
-  transactions: TransactionData[];
-  subscriptions: Subscription[];
-  authorizations: Authorization[];
-  createdAt: Date;
-  updatedAt: Date;
+  data: {
+    integration: number;
+    first_name: string;
+    last_name: string;
+    email: string;
+    phone: string | null;
+    dedicated_account: DedicatedAccount | null;
+    identified: boolean;
+    identifications: CustomerIdentification[] | null;
+    metadata: Record<string, any> | null;
+    domain: string;
+    customer_code: string;
+    id: string;
+    transactions: TransactionData[];
+    subscriptions: Subscription[];
+    authorizations: Authorization[];
+    createdAt: Date;
+    updatedAt: Date;
+  };
 }
 
-export interface ListCustomers {
-  integration: number;
-  first_name: string;
-  last_name: string;
-  email: string;
-  phone: string | null;
-  metadata: Record<string, any> | null;
-  domain: string;
-  customer_code: string;
-  id: number;
-  createdAt: Date;
-  updatedAt: Date;
+export interface ListCustomersResponse extends Response {
+  data: [
+    {
+      integration: number;
+      first_name: string;
+      last_name: string;
+      email: string;
+      phone: string | null;
+      metadata: Record<string, any> | null;
+      domain: string;
+      customer_code: string;
+      id: number;
+      createdAt: Date;
+      updatedAt: Date;
+    },
+  ];
+  meta: Meta;
 }
 
 export interface ListCustomerQueryParams {
@@ -188,4 +205,24 @@ enum RiskAction {
 enum ValidationType {
   bvn,
   bank_account,
+}
+
+export interface ICustomer {
+  integration: number;
+  first_name: string;
+  last_name: string;
+  email: string;
+  phone: string | null;
+  dedicated_account: DedicatedAccount | null;
+  identified: boolean;
+  identifications: CustomerIdentification[] | null;
+  metadata: Record<string, unknown> | null;
+  domain: string;
+  customer_code: string;
+  id: string;
+  transactions: TransactionData[];
+  subscriptions: Subscription[];
+  authorizations: Authorization[];
+  createdAt: Date;
+  updatedAt: Date;
 }
