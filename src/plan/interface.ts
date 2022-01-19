@@ -1,5 +1,6 @@
 import { Authorization } from '../charge';
-import { Meta } from '../transaction/interface';
+import { Meta } from '../interface';
+import { Subscription } from '../subscription/interface';
 
 export interface CreatePlan {
   /**
@@ -78,33 +79,13 @@ interface Plan extends PlanCreated {
   subscriptions_count: number;
   active_subscriptions_count: number;
   total_revenue: number;
-  subscribers: Subscriber[];
+  subscribers: unknown[];
 }
 interface Plans extends PlanCreated {
   subscriptions: Subscription[];
 }
 [];
 
-interface Subscription {
-  customer: number;
-  plan: number;
-  integration: number;
-  domain: string;
-  start: number;
-  status: string;
-  quantity: number;
-  amount: number;
-  subscription_code: string;
-  email_token: string;
-  authorization: Authorization;
-  easy_cron_id: unknown;
-  cron_expression: string;
-  next_payment_date: Date;
-  open_invoice: unknown;
-  id: number;
-  createdAt: Date;
-  updatedAt: Date;
-}
 export interface ListPlanQueryParams {
   /**
    * Specify how many records you want to retrieve per page.

@@ -1,7 +1,7 @@
 import { Authorization } from '../charge';
 import { ICustomer } from '../customer';
+import { Meta } from '../interface';
 import { IPlan } from '../plan';
-import { Meta } from '../transaction';
 
 export interface CreateSubscription {
   /**
@@ -45,28 +45,7 @@ export interface SubscriptionCreated extends Response {
 }
 
 export interface ListSubscriptions extends Response {
-  data: [
-    {
-      customer: ICustomer;
-      plan: IPlan;
-      integration: number;
-      authorization: Authorization;
-      domain: string;
-      start: number;
-      status: string;
-      quantity: number;
-      amount: number;
-      subscription_code: string;
-      email_token: string;
-      easy_cron_id: string;
-      cron_expression: string;
-      next_payment_date: Date;
-      open_invoice: string;
-      id: number;
-      createdAt: Date;
-      updatedAt: Date;
-    },
-  ];
+  data: Subscription[];
   meta: Meta;
 }
 
@@ -103,6 +82,27 @@ export interface GenerateSubscriptionLink extends Response {
 export interface EnableOrDisableSubscription {
   code: string;
   token: string;
+}
+
+export interface Subscription {
+  customer: ICustomer;
+  plan: IPlan;
+  integration: number;
+  authorization: Authorization;
+  domain: string;
+  start: number;
+  status: string;
+  quantity: number;
+  amount: number;
+  subscription_code: string;
+  email_token: string;
+  easy_cron_id: string;
+  cron_expression: string;
+  next_payment_date: Date;
+  open_invoice: string;
+  id: number;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface ListSubscriptionQueryParams {
