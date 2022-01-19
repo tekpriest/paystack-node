@@ -3,7 +3,7 @@ import { Charge } from './charge';
 import { Customer } from './customer';
 import { Plan } from './plan';
 import { Product } from './product/product';
-import { Subscription } from './subscription';
+import { Subscription } from './subscription/subscription';
 import { Transaction } from './transaction';
 import { Transfer } from './transfer/transfer';
 
