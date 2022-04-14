@@ -1,7 +1,7 @@
-import { Authorization, Customer } from "../charge";
-import { Meta } from "../interface";
-import { Subscription } from "../subscription";
-import { Response, TransactionData } from "../transaction";
+import { Authorization, Customer } from '../charge';
+import { Meta } from '../interface';
+import { Subscription } from '../subscription';
+import { Response, TransactionData } from '../transaction';
 
 export interface DedicatedAccountData {
   id: number;
@@ -12,12 +12,12 @@ export interface DedicatedAccountData {
   metadata: Record<string, any> | null;
   active: boolean;
   split_config: Record<string, any> | null;
-  bank: Bank
+  bank: Bank;
   slug: string;
   created_at: string;
   updated_at: string;
   assignment: Assignment;
-  customer: Customer
+  customer: Customer;
 }
 
 export interface CreateDedicatedVirtualAccount {
@@ -47,11 +47,11 @@ export interface SplitDedicatedAccountTransaction {
 
 export interface ListDedicatedVirtualAccountsResponse extends Response {
   data: DedicatedAccountData[];
-  meta: Meta
+  meta: Meta;
 }
 
 export interface DedicatedAccountCreatedResponse extends Response {
-  data: DedicatedAccountData
+  data: DedicatedAccountData;
 }
 
 export interface FetchDedicatedVirtualAccountResponse extends Response {
@@ -89,15 +89,15 @@ export interface FetchDedicatedVirtualAccountResponse extends Response {
         provider_slug: string;
         bank_id: number;
         bank_name: string;
-      }
-      assignment: Assignment
-    }
-  }
+      };
+      assignment: Assignment;
+    };
+  };
 }
 
 export interface DeactivateDedicatedAccountResponse {
   data: {
-    bank: Bank
+    bank: Bank;
     account_name: string;
     account_number: string;
     assigned: boolean;
@@ -107,13 +107,13 @@ export interface DeactivateDedicatedAccountResponse {
     id: number;
     created_at: Date;
     updated_at: Date;
-    assignment: Assignment
-  }
+    assignment: Assignment;
+  };
 }
 
 export interface SplitDedicatedAccountTransactionResponse extends Response {
   data: {
-    id: number
+    id: number;
     account_name: string;
     account_number: string;
     assigned: boolean;
@@ -125,13 +125,13 @@ export interface SplitDedicatedAccountTransactionResponse extends Response {
     created_at: Date;
     updated_at: Date;
     split_config: Record<string, any> | null;
-    customer: Customer
-  }
+    customer: Customer;
+  };
 }
 
 export interface RemoveSplitDedicatedAccountResponse extends Response {
   data: {
-    id: number
+    id: number;
     account_name: string;
     account_number: string;
     assigned: boolean;
@@ -140,7 +140,7 @@ export interface RemoveSplitDedicatedAccountResponse extends Response {
     active: boolean;
     createdAt: Date;
     updatedAt: Date;
-  }
+  };
 }
 
 export interface FetchBankProvidersResponse extends Response {
@@ -149,7 +149,7 @@ export interface FetchBankProvidersResponse extends Response {
     provider_slug: string;
     bank_id: number;
     bank_name: string;
-  }[]
+  }[];
 }
 
 interface Bank {
@@ -164,6 +164,6 @@ interface Assignment {
   assignee_type: string;
   expired: boolean;
   account_type: string;
-  assigned_at: Date
+  assigned_at: Date;
   expired_at: Date | null;
 }

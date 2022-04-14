@@ -17,7 +17,7 @@ export class Paystack {
   private readonly http: Axios;
   public charge: Charge;
   public customer: Customer;
-  public dedicated: DedicatedAccount
+  public dedicated: DedicatedAccount;
   public plan: Plan;
   public product: Product;
   public subscription: Subscription;
@@ -42,6 +42,6 @@ export class Paystack {
     this.subscription = new Subscription(this.http);
     this.transaction = new Transaction(this.http);
     this.transfer = new Transfer(this.http);
-    this.dedicated = new DedicatedAccount(this.http)
+    this.dedicated = new DedicatedAccount(this.http);
   }
 }
