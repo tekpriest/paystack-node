@@ -1,5 +1,4 @@
 import { Axios } from 'axios';
-import { TimeLike } from 'fs';
 import {
   CheckAuthorizationResponse,
   ExportTransaction,
@@ -7,7 +6,7 @@ import {
   PartialDebitResponse,
   Timeline,
   TransactionData,
-} from '.';
+} from './interface';
 import {
   ChargeAuthorization,
   CheckAuthorization,
@@ -95,7 +94,7 @@ export class Transaction {
   }
 
   async viewTimeline(id: string): Promise<Timeline | BadRequest> {
-    return await this.http.get<TimeLike | BadRequest, any>(
+    return await this.http.get<Timeline | BadRequest, any>(
       `/transaction/timeline/${id}`,
     );
   }
