@@ -1,6 +1,7 @@
 import { Axios } from 'axios';
 import { Charge } from './charge';
 import { Customer } from './customer';
+import { DedicatedAccount } from './dedicated/dedicated';
 import { Plan } from './plan';
 import { Product } from './product/product';
 import { Subscription } from './subscription/subscription';
@@ -16,6 +17,7 @@ export class Paystack {
   private readonly http: Axios;
   public charge: Charge;
   public customer: Customer;
+  public dedicated: DedicatedAccount
   public plan: Plan;
   public product: Product;
   public subscription: Subscription;
@@ -40,5 +42,6 @@ export class Paystack {
     this.subscription = new Subscription(this.http);
     this.transaction = new Transaction(this.http);
     this.transfer = new Transfer(this.http);
+    this.dedicated = new DedicatedAccount(this.http)
   }
 }
