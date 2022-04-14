@@ -74,7 +74,7 @@ export interface FetchDedicatedVirtualAccountResponse extends Response {
     created_at: Date;
     updated_at: Date;
     total_transactions: number;
-    total_transaction_value: Array<Record<string, any> | string | number>;
+    total_transaction_value: any[];
     dedicated_account: {
       id: number;
       account_name: string;
@@ -129,7 +129,7 @@ export interface SplitDedicatedAccountTransactionResponse extends Response {
   }
 }
 
-export interface RemoveSplitDedicatedAccount extends Response {
+export interface RemoveSplitDedicatedAccountResponse extends Response {
   data: {
     id: number
     account_name: string;
