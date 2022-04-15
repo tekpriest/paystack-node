@@ -40,3 +40,4 @@ All methods use promise meaning you can either use the `async...await` or `then.
 - Subscription
 - Transaction
 - Transfer
+- dedicated (For dedicated accounts)
