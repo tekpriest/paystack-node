@@ -29,7 +29,7 @@ export class DedicatedAccount {
     return await this.http.post<
       DedicatedAccountCreatedResponse | BadRequest,
       any
-    >('/dedicated_account', JSON.stringify(data),);
+    >('/dedicated_account', JSON.stringify(data));
   }
 
   async list(
@@ -65,7 +65,7 @@ export class DedicatedAccount {
     return await this.http.post<
       SplitDedicatedAccountTransactionResponse | BadRequest,
       any
-    >('/dedicated_account/split', JSON.stringify(data),);
+    >('/dedicated_account/split', JSON.stringify(data));
   }
 
   async removeSplit(
