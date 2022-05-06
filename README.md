@@ -16,7 +16,7 @@ For NPM
 
 For Typescript
 
-```
+```typescript
 import {Paystack} from 'paystack-sdk';
 
 const paystack = new Paystack("secret_key);
@@ -24,7 +24,7 @@ const paystack = new Paystack("secret_key);
 
 For Javscript
 
-```
+```javascript
 const Paystack = require('paystack-sdk').Paystack;
 const paystack = new Paystack("secret_key");
 ```
