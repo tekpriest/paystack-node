@@ -1,6 +1,6 @@
 {
   "name": "paystack-sdk",
-  "version": "1.3.0",
+  "version": "2.1.0",
   "description": "Paystack SDK written in Typescript",
   "main": "dist/index.js",
   "author": "Tech Priest",
