@@ -1,17 +1,17 @@
 {
   "compilerOptions": {
     "experimentalDecorators": true,
-    "target": "es6",                                     /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
-    "module": "commonjs",                                /* Specify what module code is generated. */
+    "target": "es6",
+    "module": "commonjs",
     "moduleResolution": "node",
-    "declaration": true,                              /* Generate .d.ts files from TypeScript and JavaScript files in your project. */
-    "outDir": "./dist",                                   /* Specify an output folder for all emitted files. */
-    "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables `allowSyntheticDefaultImports` for type compatibility. */
-    "strict": true,                                      /* Enable all strict type-checking options. */
+    "declaration": true,
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "strict": true,
     "checkJs": true,
     "allowSyntheticDefaultImports": true,
-    "strictNullChecks": false,
+    "strictNullChecks": false
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["node_modules","**/__tests__/*"]
+  "exclude": ["node_modules", "**/__tests__/*"]
 }

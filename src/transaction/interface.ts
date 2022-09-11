@@ -88,48 +88,50 @@ export interface TransactionInitialized extends Response {
   };
 }
 
-export interface TransactionData extends Response {
-  data: {
-    amount: number;
-    currency: string;
-    transaction_date: Date;
-    status: string;
-    reference: string;
-    domain: string;
-    metadata: number;
-    gateway_response: string;
-    message?: string;
-    channel: string;
-    ip_address: string;
-    log: [
-      {
-        time_spent: number;
-        attempt: number;
-        authentication: any;
-        errors: number;
-        success: boolean;
-        mobile: boolean;
-        input: [];
-        channel: string;
-        history: [
-          {
-            type: string;
-            message: string;
-            time: number;
-          },
-        ];
-      },
-    ];
-    fees: number;
-    authorization: Authorization;
-    customer: Customer;
-    pin: string;
-    required_amount: number;
-  };
+interface Transaction {
+  amount: number;
+  currency: string;
+  transaction_date: Date;
+  status: string;
+  reference: string;
+  domain: string;
+  metadata: number;
+  gateway_response: string;
+  message?: string;
+  channel: string;
+  ip_address: string;
+  log: [
+    {
+      time_spent: number;
+      attempt: number;
+      authentication: any;
+      errors: number;
+      success: boolean;
+      mobile: boolean;
+      input: [];
+      channel: string;
+      history: [
+        {
+          type: string;
+          message: string;
+          time: number;
+        },
+      ];
+    },
+  ];
+  fees: number;
+  authorization: Authorization;
+  customer: Customer;
+  pin: string;
+  required_amount: number;
+}
+
+export interface GetTransactionResponse extends Response {
+  data: Transaction;
 }
 
 export interface ListTransactions extends Response {
-  data: TransactionData[];
+  data: Transaction[];
   meta: Meta;
 }
 

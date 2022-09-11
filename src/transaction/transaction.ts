@@ -5,7 +5,7 @@ import {
   ListTransactions,
   PartialDebitResponse,
   Timeline,
-  TransactionData,
+  GetTransactionResponse,
 } from './interface';
 import {
   ChargeAuthorization,
@@ -45,8 +45,8 @@ export class Transaction {
     >('/transaction/initialize', JSON.stringify(data));
     return response;
   }
-  async verify(reference: string): Promise<TransactionData | BadRequest> {
-    const response = await this.http.get<TransactionData | BadRequest, any>(
+  async verify(reference: string): Promise<GetTransactionResponse | BadRequest> {
+    const response = await this.http.get<GetTransactionResponse | BadRequest, any>(
       '/transaction/verify',
       {
         params: { reference },
@@ -66,8 +66,8 @@ export class Transaction {
     return response;
   }
 
-  async fetch(id: string): Promise<TransactionData | BadRequest> {
-    const response = await this.http.get<TransactionData | BadRequest, any>(
+  async fetch(id: string): Promise<GetTransactionResponse | BadRequest> {
+    const response = await this.http.get<GetTransactionResponse | BadRequest, any>(
       `/transaction/:${id}`,
     );
     return response;
@@ -75,8 +75,8 @@ export class Transaction {
 
   async chargeAuthorization(
     data: ChargeAuthorization,
-  ): Promise<TransactionData | BadRequest> {
-    const response = await this.http.post<TransactionData | BadRequest, any>(
+  ): Promise<GetTransactionResponse | BadRequest> {
+    const response = await this.http.post<GetTransactionResponse | BadRequest, any>(
       '/transaction/charge_authorization',
       JSON.stringify(data),
     );

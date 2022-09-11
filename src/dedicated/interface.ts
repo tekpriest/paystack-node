@@ -1,7 +1,7 @@
 import { Authorization, Customer } from '../charge';
 import { Meta } from '../interface';
 import { Subscription } from '../subscription';
-import { Response, TransactionData } from '../transaction';
+import { Response, Transaction } from '../transaction';
 
 export interface DedicatedAccountData {
   id: number;
@@ -56,7 +56,7 @@ export interface DedicatedAccountCreatedResponse extends Response {
 
 export interface FetchDedicatedVirtualAccountResponse extends Response {
   data: {
-    transactions: TransactionData[];
+    transactions: Transaction[];
     subscriptions: Subscription[];
     authorizations: Authorization[];
     first_name: string;

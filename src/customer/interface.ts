@@ -1,14 +1,14 @@
 import { Authorization } from '../charge';
 import { Meta } from '../interface';
 import { Subscription } from '../subscription/interface';
-import { TransactionData } from '../transaction';
+import { Transaction } from '../transaction';
 
 export interface CreateCustomer {
   email: string;
   first_name: string;
   last_name: string;
   phone?: string;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 export interface Response {
@@ -18,14 +18,14 @@ export interface Response {
 
 export interface CustomerCreated extends Response {
   data: {
-    transactions: TransactionData[];
+    transactions: Transaction[];
     subscriptions: Subscription[];
     authorizations: Authorization[];
     first_name: string;
     last_name: string;
     email: string;
     phone: string | null;
-    metadata: Record<string, any> | null;
+    metadata?: Record<string, unknown>;
     domain: string;
     customer_code: string;
     risk_action: string;
@@ -52,7 +52,7 @@ export interface CustomerData extends Response {
     domain: string;
     customer_code: string;
     id: string;
-    transactions: TransactionData[];
+    transactions: Transaction[];
     subscriptions: Subscription[];
     authorizations: Authorization[];
     createdAt: Date;
@@ -222,7 +222,7 @@ export interface ICustomer {
   domain: string;
   customer_code: string;
   id: string;
-  transactions: TransactionData[];
+  transactions: Transaction[];
   subscriptions: Subscription[];
   authorizations: Authorization[];
   createdAt: Date;
