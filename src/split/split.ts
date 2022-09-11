@@ -94,11 +94,9 @@ export class TransactionSplit {
     subaccount: string,
   ): Promise<Response | BadRequest> {
     return await this.http.request({
-
-      url:`/split/${splitId}/subaccount/remove`,
-      data:JSON.stringify({ subaccount }),
-      method: 'post'
-    }
-    );
+      url: `/split/${splitId}/subaccount/remove`,
+      data: JSON.stringify({ subaccount }),
+      method: 'post',
+    });
   }
 }
