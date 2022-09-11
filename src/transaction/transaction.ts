@@ -45,13 +45,15 @@ export class Transaction {
     >('/transaction/initialize', JSON.stringify(data));
     return response;
   }
-  async verify(reference: string): Promise<GetTransactionResponse | BadRequest> {
-    const response = await this.http.get<GetTransactionResponse | BadRequest, any>(
-      '/transaction/verify',
-      {
-        params: { reference },
-      },
-    );
+  async verify(
+    reference: string,
+  ): Promise<GetTransactionResponse | BadRequest> {
+    const response = await this.http.get<
+      GetTransactionResponse | BadRequest,
+      any
+    >('/transaction/verify', {
+      params: { reference },
+    });
     return response;
   }
   async list(
@@ -67,19 +69,20 @@ export class Transaction {
   }
 
   async fetch(id: string): Promise<GetTransactionResponse | BadRequest> {
-    const response = await this.http.get<GetTransactionResponse | BadRequest, any>(
-      `/transaction/:${id}`,
-    );
+    const response = await this.http.get<
+      GetTransactionResponse | BadRequest,
+      any
+    >(`/transaction/:${id}`);
     return response;
   }
 
   async chargeAuthorization(
     data: ChargeAuthorization,
   ): Promise<GetTransactionResponse | BadRequest> {
-    const response = await this.http.post<GetTransactionResponse | BadRequest, any>(
-      '/transaction/charge_authorization',
-      JSON.stringify(data),
-    );
+    const response = await this.http.post<
+      GetTransactionResponse | BadRequest,
+      any
+    >('/transaction/charge_authorization', JSON.stringify(data));
     return response;
   }
 
