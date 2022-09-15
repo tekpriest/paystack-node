@@ -1,10 +1,12 @@
 import { Axios } from 'axios';
+import { ApplePay } from './apple/apple';
 import { Charge } from './charge';
 import { Customer } from './customer';
 import { DedicatedAccount } from './dedicated/dedicated';
 import { Plan } from './plan';
 import { Product } from './product/product';
 import { TransactionSplit } from './split/split';
+import { SubAccount } from './subaccounts/subaccount';
 import { Subscription } from './subscription/subscription';
 import { Transaction } from './transaction';
 import { Transfer } from './transfer/transfer';
@@ -25,6 +27,8 @@ export class Paystack {
   public transaction: Transaction;
   public transfer: Transfer;
   public split: TransactionSplit;
+  public applePay: ApplePay;
+  public subAccount: SubAccount;
   constructor(public readonly key: string) {
     this.http = new Axios({
       baseURL: 'https://api.paystack.co',
@@ -37,18 +41,16 @@ export class Paystack {
       (response) => (response.data = JSON.parse(response.data)),
     );
 
-    // this.http.interceptors.request.use(
-    //   (body) => (body.data = JSON.stringify(body.data)),
-    // );
-
     this.charge = new Charge(this.http);
     this.customer = new Customer(this.http);
+    this.dedicated = new DedicatedAccount(this.http);
     this.plan = new Plan(this.http);
     this.product = new Product(this.http);
+    this.split = new TransactionSplit(this.http);
     this.subscription = new Subscription(this.http);
     this.transaction = new Transaction(this.http);
     this.transfer = new Transfer(this.http);
-    this.dedicated = new DedicatedAccount(this.http);
-    this.split = new TransactionSplit(this.http);
+    this.applePay = new ApplePay(this.http);
+    this.subAccount = new SubAccount(this.http);
   }
 }

@@ -3,12 +3,6 @@ import { Meta } from '../interface';
 export type SplitCurrrencyType = 'GHS' | 'NGN' | 'ZAR' | 'USD';
 export type SplitType = 'percentage' | 'flat';
 
-export interface BadRequest {
-  status: boolean;
-  message: string;
-  data: null;
-}
-
 interface SubAccount {
   id: number;
   subaccount_code: string;

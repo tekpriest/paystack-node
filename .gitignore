@@ -105,3 +105,4 @@ dist
 test.js
 
 yarn.lock
+.DS_Store

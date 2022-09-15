@@ -1,6 +1,6 @@
 import { Axios } from 'axios';
+import { BadRequest } from '../interface';
 import {
-  BadRequest,
   CreateSplit,
   ListSplitQueryParams,
   ListSplitsResponse,

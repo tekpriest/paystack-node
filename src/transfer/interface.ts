@@ -25,11 +25,6 @@ export interface InitiateTransfer {
   reference?: string;
 }
 
-export interface Response {
-  status: boolean;
-  message: string;
-}
-
 export interface FinalizeTransfer extends Response {
   data: Transfer;
 }
