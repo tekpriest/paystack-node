@@ -26,7 +26,7 @@ For Javscript
 
 ```javascript
 const Paystack = require('paystack-sdk').Paystack;
-const paystack = new Paystack("secret_key");
+const paystack = new Paystack('secret_key');
 ```
 
 All methods use promise meaning you can either use the `async...await` or `then...catch` or `try...catch`
@@ -45,8 +45,8 @@ All methods use promise meaning you can either use the `async...await` or `then.
 - SubAccount
 - Transaction Split
 
-
 ## CONTRIBUTING
+
 If you notice a missing function, or maybe a bug. Please feel free to submit
 a PR. I will take a look at it.
 You will need to fork the repo and create a PR against it with your changes.

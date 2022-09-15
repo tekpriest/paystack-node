@@ -1,7 +1,7 @@
 import { Authorization } from '../charge';
 import { Meta } from '../interface';
 import { Subscription } from '../subscription/interface';
-import { Transaction } from '../transaction';
+import { Transaction } from '../transaction/interface';
 
 export interface CreateCustomer {
   email: string;
@@ -16,66 +16,38 @@ export interface Response {
   message: string;
 }
 
-export interface CustomerCreated extends Response {
-  data: {
-    transactions: Transaction[];
-    subscriptions: Subscription[];
-    authorizations: Authorization[];
-    first_name: string;
-    last_name: string;
-    email: string;
-    phone: string | null;
-    metadata?: Record<string, unknown>;
-    domain: string;
-    customer_code: string;
-    risk_action: string;
-    id: number;
-    integration: number;
-    createdAt: Date;
-    updatedAt: Date;
-    identified: boolean;
-    identifications: null;
-  };
+export interface Customer {
+  id: number;
+  transactions: Transaction[];
+  subscriptions: Subscription[];
+  authorizations: Authorization[];
+  first_name: string;
+  last_name: string;
+  email: string;
+  phone?: string;
+  metadata?: Record<string, unknown>;
+  domain: string;
+  customer_code: string;
+  risk_action: string;
+  international_format_phone?: string;
+  integration: number;
+  createdAt: Date;
+  updatedAt: Date;
+  identified: boolean;
+  identifications: CustomerIdentification[];
+  dedicated_account: DedicatedAccount[];
 }
 
-export interface CustomerData extends Response {
-  data: {
-    integration: number;
-    first_name: string;
-    last_name: string;
-    email: string;
-    phone: string | null;
-    dedicated_account: DedicatedAccount | null;
-    identified: boolean;
-    identifications: CustomerIdentification[] | null;
-    metadata: Record<string, any> | null;
-    domain: string;
-    customer_code: string;
-    id: string;
-    transactions: Transaction[];
-    subscriptions: Subscription[];
-    authorizations: Authorization[];
-    createdAt: Date;
-    updatedAt: Date;
-  };
+export interface CustomerCreated extends Response {
+  data: Customer;
+}
+
+export interface FetchCustomerResponse extends Response {
+  data: Customer;
 }
 
 export interface ListCustomersResponse extends Response {
-  data: [
-    {
-      integration: number;
-      first_name: string;
-      last_name: string;
-      email: string;
-      phone: string | null;
-      metadata: Record<string, any> | null;
-      domain: string;
-      customer_code: string;
-      id: number;
-      createdAt: Date;
-      updatedAt: Date;
-    },
-  ];
+  data: Customer[];
   meta: Meta;
 }
 
@@ -138,7 +110,7 @@ export interface SubAccount {
     primary_contact_name: string | null;
     primary_contact_email: string | null;
     primary_contact_phone: string | null;
-    metadata: Record<string, any>;
+    metadata: Record<string, unknown>;
     settlement_bank: string;
     currency: string;
     account_number: string;
@@ -179,7 +151,7 @@ export interface UpdateCustomer {
   first_name: string;
   last_name: string;
   phone: string;
-  metadata: Record<string, any>;
+  metadata: Record<string, unknown>;
 }
 
 export interface SetRiskAction {

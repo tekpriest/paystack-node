@@ -88,7 +88,7 @@ export interface TransactionInitialized extends Response {
   };
 }
 
-interface Transaction {
+export interface Transaction {
   amount: number;
   currency: string;
   transaction_date: Date;

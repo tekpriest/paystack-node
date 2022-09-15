@@ -1,11 +1,10 @@
 import { Axios } from 'axios';
-import { BadRequest } from '../interface';
+import { BadRequest, QueryParams } from '../interface';
 import {
   CreateUpdateSubAccount,
   FetchSubAccountResponse,
   ListSubAccountsResponse,
   SubAccountCreatedUpdateResponse,
-  SubAccountQueryParams,
 } from './interface';
 
 export class SubAccount {
@@ -20,9 +19,7 @@ export class SubAccount {
     return await this.http.post('/subaccount', JSON.stringify(data));
   }
 
-  async list(
-    queryParams?: SubAccountQueryParams,
-  ): Promise<ListSubAccountsResponse> {
+  async list(queryParams?: QueryParams): Promise<ListSubAccountsResponse> {
     return await this.http.get('/subaccount', { params: { ...queryParams } });
   }
 

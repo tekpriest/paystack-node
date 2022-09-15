@@ -1,20 +1,15 @@
 import { Axios } from 'axios';
-import { ListCustomersResponse } from '.';
+import { BadRequest } from '../interface';
+import { ListCustomersResponse } from './interface';
 import {
   CreateCustomer,
   CustomerCreated,
-  CustomerData,
+  FetchCustomerResponse,
   ListCustomerQueryParams,
   SetRiskAction,
   UpdateCustomer,
   ValidateCustomer,
 } from './interface';
-
-interface BadRequest {
-  status: boolean;
-  message: string;
-  data: null;
-}
 
 /**
  * # Customers
@@ -33,26 +28,19 @@ export class Customer {
    * @param {CreateCustomer} data
    */
   async create(data: CreateCustomer): Promise<CustomerCreated | BadRequest> {
-    return await this.http.post<CustomerCreated | BadRequest, any>(
-      '/customer',
-      JSON.stringify(data),
-    );
+    return await this.http.post('/customer', JSON.stringify(data));
   }
 
   /**
    * ## List Customers
    * List customers available on your integration
-   * @param {ListCustomerQueryParams} queryParams
    */
   async list(
     queryParams?: ListCustomerQueryParams,
   ): Promise<ListCustomersResponse | BadRequest> {
-    return await this.http.get<ListCustomersResponse | BadRequest, any>(
-      '/customer',
-      {
-        params: { ...queryParams },
-      },
-    );
+    return await this.http.get('/customer', {
+      params: { ...queryParams },
+    });
   }
 
   /**
@@ -60,10 +48,8 @@ export class Customer {
    * Get details of a customer on your integration
    * @param {String} email_or_code
    */
-  async fetch(emailCode: string): Promise<CustomerData | BadRequest> {
-    return await this.http.get<CustomerData | BadRequest, any>(
-      `/customer/${emailCode}`,
-    );
+  async fetch(emailCode: string): Promise<FetchCustomerResponse | BadRequest> {
+    return await this.http.get(`/customer/${emailCode}`);
   }
 
   /**
@@ -73,24 +59,19 @@ export class Customer {
   async update(
     code: string,
     data: UpdateCustomer,
-  ): Promise<CustomerData | BadRequest> {
-    return await this.http.put<CustomerData | BadRequest, any>(
-      `/customer/${code}`,
-      JSON.stringify(data),
-    );
+  ): Promise<FetchCustomerResponse | BadRequest> {
+    return await this.http.put(`/customer/${code}`, JSON.stringify(data));
   }
 
   /**
    * ## Validate Customer
    * Validate a customer's identity
-   * @param {String} customer_code
-   * @param {ValidateCustomer} data
    */
   async validate(
     customerCode: string,
     data: ValidateCustomer,
   ): Promise<Response | BadRequest> {
-    return await this.http.post<Response | BadRequest, any>(
+    return await this.http.post(
       `/customer/${customerCode}/identification`,
       JSON.stringify(data),
     );
@@ -99,10 +80,11 @@ export class Customer {
   /**
    * ## Whitelist/Blacklist Customer
    * Whitelist or black a customer on your integration
-   * @param {SetRiskAction} data
    */
-  async setRiskAction(data: SetRiskAction): Promise<CustomerData | BadRequest> {
-    return await this.http.post<CustomerData | BadRequest, any>(
+  async setRiskAction(
+    data: SetRiskAction,
+  ): Promise<FetchCustomerResponse | BadRequest> {
+    return await this.http.post(
       '/customer/set_risk_action',
       JSON.stringify(data),
     );
@@ -111,13 +93,11 @@ export class Customer {
   /**
    * ## Deactivate Authorization
    * Deactivate an authorization when the card needs to be forgotten
-   * @param {String} authorizaion_code
    */
   async deactivateAutorization(authorizationCode: string): Promise<Response> {
-    const response = await this.http.post<Response, any>(
+    return await this.http.post(
       '/customer/deactivate_authorization',
       JSON.stringify({ authorizaion_code: authorizationCode }),
     );
-    return response;
   }
 }
