@@ -40,7 +40,10 @@ All methods use promise meaning you can either use the `async...await` or `then.
 - Subscription
 - Transaction
 - Transfer
-- dedicated (For dedicated accounts)
+- Dedicated (For dedicated accounts)
+- Apple Pay
+- SubAccount
+- Transaction Split
 
 
 ## CONTRIBUTING
