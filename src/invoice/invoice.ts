@@ -23,7 +23,7 @@ export class Invoice {
   }
 
   async list(
-    queryParams: InvoiceQueryParams,
+    queryParams?: InvoiceQueryParams,
   ): Promise<ListInvoicesResponse | BadRequest> {
     return await this.http.get('/paymentrequest', {
       params: { ...queryParams },

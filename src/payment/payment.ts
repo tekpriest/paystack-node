@@ -20,7 +20,7 @@ export class PaymentPage {
   }
 
   async list(
-    queryParams: QueryParams,
+    queryParams?: QueryParams,
   ): Promise<ListPaymentPagesResponse | BadRequest> {
     return await this.http.get('/page', { params: { ...queryParams } });
   }

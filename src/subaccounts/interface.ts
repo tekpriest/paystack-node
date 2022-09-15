@@ -57,7 +57,7 @@ export interface CreateUpdateSubAccount {
 }
 
 interface SubAccount {
-  integration: number;
+  id: number;
   domain: string;
   subaccount_code: string;
   business_name: string;
@@ -65,7 +65,7 @@ interface SubAccount {
   primary_contact_name?: string;
   primary_contact_email?: string;
   primary_contact_phone?: string;
-  metadata?: Record<string, unknown>;
+  metadata: Record<string, unknown>;
   percentage_charge: number;
   is_verified: boolean;
   settlement_bank: string;
@@ -73,9 +73,10 @@ interface SubAccount {
   settlement_schedule: string;
   active: boolean;
   migrate: boolean;
-  id: number;
+  integration: number;
   createdAt: Date;
   updatedAt: Date;
+  currency: string;
 }
 
 export interface SubAccountCreatedUpdateResponse extends Response {

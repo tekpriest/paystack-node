@@ -1,7 +1,8 @@
 import { Authorization, Customer } from '../charge';
 import { Meta } from '../interface';
 import { Subscription } from '../subscription';
-import { Response, Transaction } from '../transaction';
+import { Response } from '../interface';
+import { Transaction } from '../transaction/interface';
 
 export interface DedicatedAccountData {
   id: number;
@@ -9,9 +10,9 @@ export interface DedicatedAccountData {
   account_number: string;
   assigned: boolean;
   currency: string;
-  metadata: Record<string, any> | null;
+  metadata?: Record<string, unknown>;
   active: boolean;
-  split_config: Record<string, any> | null;
+  split_config?: Record<string, unknown>;
   bank: Bank;
   slug: string;
   created_at: string;
@@ -63,7 +64,7 @@ export interface FetchDedicatedVirtualAccountResponse extends Response {
     last_name: string;
     email: string;
     phone: string;
-    metadata: Record<string, any> | null;
+    metadata?: Record<string, unknown>;
     domain: string;
     customer_code: string;
     risk_action: string;
@@ -74,7 +75,7 @@ export interface FetchDedicatedVirtualAccountResponse extends Response {
     created_at: Date;
     updated_at: Date;
     total_transactions: number;
-    total_transaction_value: any[];
+    total_transaction_value: unknown[];
     dedicated_account: {
       id: number;
       account_name: string;
@@ -102,7 +103,7 @@ export interface DeactivateDedicatedAccountResponse {
     account_number: string;
     assigned: boolean;
     currency: string;
-    metadata: Record<string, any> | null;
+    metadata?: Record<string, unknown>;
     active: boolean;
     id: number;
     created_at: Date;
@@ -118,13 +119,13 @@ export interface SplitDedicatedAccountTransactionResponse extends Response {
     account_number: string;
     assigned: boolean;
     currency: string;
-    metadata: Record<string, any> | null;
+    metadata?: Record<string, unknown>;
     active: boolean;
     bank: Bank;
     assignment: Assignment;
     created_at: Date;
     updated_at: Date;
-    split_config: Record<string, any> | null;
+    split_config?: Record<string, unknown>;
     customer: Customer;
   };
 }
@@ -136,7 +137,7 @@ export interface RemoveSplitDedicatedAccountResponse extends Response {
     account_number: string;
     assigned: boolean;
     currency: string;
-    split_config: Record<string, any> | null;
+    split_config?: Record<string, unknown>;
     active: boolean;
     createdAt: Date;
     updatedAt: Date;

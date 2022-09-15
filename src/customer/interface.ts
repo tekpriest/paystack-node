@@ -1,5 +1,6 @@
 import { Authorization } from '../charge';
 import { Meta } from '../interface';
+import { SubAccount } from '../subaccounts/subaccount';
 import { Subscription } from '../subscription/interface';
 import { Transaction } from '../transaction/interface';
 
@@ -97,24 +98,12 @@ export interface SplitConfig {
   createdAt: Date;
   updatedAt: Date;
   is_dynamic: boolean;
-  subaccounts: SubAccount[];
+  subaccounts: CustomerSubAccount[];
   total_subaccounts: number;
 }
 
-export interface SubAccount {
-  subaccount: {
-    id: number;
-    sunaccount_code: string;
-    business_name: string;
-    description: string;
-    primary_contact_name: string | null;
-    primary_contact_email: string | null;
-    primary_contact_phone: string | null;
-    metadata: Record<string, unknown>;
-    settlement_bank: string;
-    currency: string;
-    account_number: string;
-  };
+export interface CustomerSubAccount {
+  subaccount: SubAccount;
   share: number;
 }
 

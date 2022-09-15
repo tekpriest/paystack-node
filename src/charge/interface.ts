@@ -1,4 +1,4 @@
-import { Response } from '../transaction';
+import { Response } from '../interface';
 
 export type ChargeCreatedResponse =
   | ChargeCreated

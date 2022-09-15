@@ -1,5 +1,5 @@
 import { Authorization } from '../charge';
-import { ICustomer } from '../customer';
+import { Customer } from '../customer/interface';
 import { Meta } from '../interface';
 import { IPlan } from '../plan';
 
@@ -52,7 +52,7 @@ export interface ListSubscriptions extends Response {
 export interface FetchSubscription extends Response {
   data: {
     invoices: unknown[];
-    customer: ICustomer;
+    customer: Customer;
     plan: IPlan;
     integration: number;
     authorization: Authorization;
@@ -85,7 +85,7 @@ export interface EnableOrDisableSubscription {
 }
 
 export interface Subscription {
-  customer: ICustomer;
+  customer: Customer;
   plan: IPlan;
   integration: number;
   authorization: Authorization;

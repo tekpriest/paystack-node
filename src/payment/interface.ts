@@ -75,14 +75,23 @@ export interface PaymentPageProduct {
 }
 
 export interface PaymentPage {
+  id: number;
   name: string;
   description?: string;
   integration: number;
   domain: string;
-  slug?: string;
-  currency?: string;
-  active?: boolean;
-  id: number;
+  slug: string;
+  currency: string;
+  type: string;
+  redirect_url?: string;
+  success_message?: string;
+  collect_phone: boolean;
+  active: boolean;
+  published: boolean;
+  migrate: boolean;
+  notification_email?: string;
+  metadata?: Record<string, unknown>;
+  split_code?: string;
   createdAt: Date;
   updatedAt: Date;
   products?: ProductCreated[];
