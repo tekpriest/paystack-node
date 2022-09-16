@@ -7,6 +7,7 @@ import { Invoice } from './invoice/invoice';
 import { PaymentPage } from './payment/payment';
 import { Plan } from './plan';
 import { Product } from './product/product';
+import { Recipient } from './recipient/recipient';
 import { Settlement } from './settlement/settlement';
 import { TransactionSplit } from './split/split';
 import { SubAccount } from './subaccounts/subaccount';
@@ -35,6 +36,7 @@ export class Paystack {
   public page: PaymentPage;
   public invoice: Invoice;
   public settlement: Settlement;
+  public recipient: Recipient;
   constructor(private readonly key: string) {
     this.http = new Axios({
       baseURL: 'https://api.paystack.co',
@@ -61,5 +63,6 @@ export class Paystack {
     this.page = new PaymentPage(this.http);
     this.invoice = new Invoice(this.http);
     this.settlement = new Settlement(this.http);
+    this.recipient = new Recipient(this.http);
   }
 }
