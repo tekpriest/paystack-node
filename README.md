@@ -53,7 +53,7 @@ All methods use promise meaning you can either use the `async...await` or `then.
 - [x] Transaction Splits
 - [x] Settlements
 - [x] Invoices
-- [ ] Transaction Recipients
+- [x] Transaction Recipients
 - [ ] Transfers Control
 - [ ] Bulk Charges
 - [ ] Control Panel
