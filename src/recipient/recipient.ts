@@ -50,6 +50,6 @@ export class Recipient {
   }
 
   async delete(id: string): Promise<Response | BadRequest> {
-    return await this.http.delete(`/transferrecipient/${id}`)
+    return await this.http.delete(`/transferrecipient/${id}`);
   }
 }
