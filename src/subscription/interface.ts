@@ -1,4 +1,4 @@
-import { Authorization } from '../charge';
+import { Authorization } from '../charge/interface';
 import { Customer } from '../customer/interface';
 import { Meta } from '../interface';
 import { IPlan } from '../plan';

@@ -1,4 +1,4 @@
-import { Authorization } from '../charge';
+import { Authorization } from '../charge/interface';
 import { Meta } from '../interface';
 import { SubAccount } from '../subaccounts/subaccount';
 import { Subscription } from '../subscription/interface';

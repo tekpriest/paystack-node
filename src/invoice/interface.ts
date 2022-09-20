@@ -1,4 +1,4 @@
-import { Customer } from '../charge';
+import { Customer } from '../customer/interface';
 import { Meta, QueryParams, Response } from '../interface';
 import { Transaction } from '../transaction/interface';
 

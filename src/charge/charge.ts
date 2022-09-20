@@ -5,7 +5,7 @@ import {
   ChargeCreatedWithOTPResponse,
   ChargeCreatedWithPendingResponse,
   ChargeCreatedWithPhoneResponse,
-} from '.';
+} from './interface';
 import {
   ChargeCreatedResponse,
   ChargeCreatedWithPinResponse,

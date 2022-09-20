@@ -1,4 +1,3 @@
-import { Authorization } from '../charge';
 import { Meta } from '../interface';
 import { Subscription } from '../subscription/interface';
 

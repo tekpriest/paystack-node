@@ -1,8 +1,9 @@
-import { Authorization, Customer } from '../charge';
+import { Authorization } from '../charge/interface';
 import { Meta } from '../interface';
 import { Subscription } from '../subscription';
 import { Response } from '../interface';
 import { Transaction } from '../transaction/interface';
+import { Customer } from '../customer/interface';
 
 export interface DedicatedAccountData {
   id: number;

@@ -1,4 +1,5 @@
-import { Authorization, Customer } from '../charge';
+import { Authorization } from '../charge/interface';
+import { Customer } from '../customer/interface';
 import { Meta } from '../interface';
 
 export interface InitializeTransaction {
@@ -104,7 +105,7 @@ export interface Transaction {
     {
       time_spent: number;
       attempt: number;
-      authentication: any;
+      authentication?: unknown;
       errors: number;
       success: boolean;
       mobile: boolean;
@@ -139,7 +140,7 @@ export interface Timeline extends Response {
   data: {
     time_spent: number;
     attempts: number;
-    authentication: any;
+    authentication?: unknown;
     errors: number;
     success: boolean;
     mobile: boolean;
@@ -313,7 +314,7 @@ export interface PartialDebit {
 }
 
 export interface PartialDebitResponse extends Response {
-  data: Record<string, any>;
+  data: Record<string, unknown>;
 }
 
 export interface CheckAuthorizationResponse extends Response {

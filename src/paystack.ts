@@ -1,6 +1,6 @@
 import { Axios } from 'axios';
 import { ApplePay } from './apple/apple';
-import { Charge } from './charge';
+import { Charge } from './charge/charge';
 import { Customer } from './customer/customer';
 import { DedicatedAccount } from './dedicated/dedicated';
 import { Invoice } from './invoice/invoice';
