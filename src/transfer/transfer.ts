@@ -1,4 +1,5 @@
 import { Axios } from 'axios';
+import { Control } from './control';
 import {
   BulkTransferInitiated,
   FetchTransfer,
@@ -18,8 +19,10 @@ interface BadRequest {
 
 export class Transfer {
   http: Axios;
+  public control: Control;
   constructor(http: Axios) {
     this.http = http;
+    this.control = new Control(http);
   }
 
   /**
@@ -30,7 +33,7 @@ export class Transfer {
   async initiate(
     data: InitiateTransfer,
   ): Promise<TransferInitiated | BadRequest> {
-    return await this.http.post<TransferInitiated | BadRequest, any>(
+    return await this.http.post(
       '/transfer',
       JSON.stringify(data),
     );
@@ -44,7 +47,7 @@ export class Transfer {
     transferCode: string,
     otp: string,
   ): Promise<FinalizeTransfer | BadRequest> {
-    return await this.http.post<FinalizeTransfer | BadRequest, any>(
+    return await this.http.post(
       '/transfer/finalize_transfer',
       JSON.stringify({ transfer_code: transferCode, otp }),
     );
@@ -53,7 +56,7 @@ export class Transfer {
   async bulk(
     data: InitiateBulkTransfer,
   ): Promise<BulkTransferInitiated | BadRequest> {
-    return await this.http.post<BulkTransferInitiated | BadRequest, any>(
+    return await this.http.post(
       '/transfer/bulk',
       JSON.stringify(data),
     );
@@ -62,19 +65,19 @@ export class Transfer {
   async list(
     queryParams?: ListTransferQueryParams,
   ): Promise<ListTransfers | BadRequest> {
-    return await this.http.get<ListTransfers | BadRequest, any>('/transfer', {
+    return await this.http.get('/transfer', {
       params: { ...queryParams },
     });
   }
 
   async fetch(idOrCode: string): Promise<FetchTransfer | BadRequest> {
-    return await this.http.get<FetchTransfer | BadRequest, any>(
+    return await this.http.get(
       `/transfer/${idOrCode}`,
     );
   }
 
   async verify(reference: string): Promise<VerifyTransfer | BadRequest> {
-    return await this.http.get<VerifyTransfer | BadRequest, any>(
+    return await this.http.get(
       `transfer/verify/${reference}`,
     );
   }
