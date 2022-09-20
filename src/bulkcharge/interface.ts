@@ -1,5 +1,5 @@
-import { Charge } from "../charge/interface";
-import { Meta, QueryParams, Response } from "../interface";
+import { Charge } from '../charge/interface';
+import { Meta, QueryParams, Response } from '../interface';
 
 export interface InitiateBulkCharge {
   authorization: string;
@@ -11,7 +11,7 @@ export interface BulkCharge {
   id: number;
   domain: string;
   batch_code: string;
-  status: 'active'|'paused'|'complete';
+  status: 'active' | 'paused' | 'complete';
   integration?: number;
   reference?: string;
   total_charges?: number;
@@ -26,17 +26,17 @@ export interface ListBulkChargeBatchesResponse extends Response {
 }
 
 export interface InitiateBulkChargeResponse extends Response {
-  data: BulkCharge
+  data: BulkCharge;
 }
 
 export interface FetchBulkBatchChargeResponse extends Response {
-  data: BulkCharge
+  data: BulkCharge;
 }
 
 export interface FetchChargesInBatchResponse extends Response {
-  data: Charge
+  data: Charge;
 }
 
 export interface QueryBatchChargesParams extends QueryParams {
-  status: 'pending'|'success'|'failed';
+  status: 'pending' | 'success' | 'failed';
 }

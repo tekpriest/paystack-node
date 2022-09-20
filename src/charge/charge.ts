@@ -1,5 +1,11 @@
 import { Axios } from 'axios';
-import { ChargeCreatedWithAddressResponse, ChargeCreatedWithBirthdayResponse, ChargeCreatedWithOTPResponse, ChargeCreatedWithPendingResponse, ChargeCreatedWithPhoneResponse } from '.';
+import {
+  ChargeCreatedWithAddressResponse,
+  ChargeCreatedWithBirthdayResponse,
+  ChargeCreatedWithOTPResponse,
+  ChargeCreatedWithPendingResponse,
+  ChargeCreatedWithPhoneResponse,
+} from '.';
 import {
   ChargeCreatedResponse,
   ChargeCreatedWithPinResponse,
@@ -27,7 +33,9 @@ export class Charge {
     return await this.http.post('/charge', JSON.stringify(data));
   }
 
-  async submitPIN(data: SubmitPIN): Promise<ChargeCreatedWithPinResponse | BadRequest> {
+  async submitPIN(
+    data: SubmitPIN,
+  ): Promise<ChargeCreatedWithPinResponse | BadRequest> {
     return await this.http.post('/charge/submit_pin', JSON.stringify(data));
   }
 

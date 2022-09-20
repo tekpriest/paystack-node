@@ -33,10 +33,7 @@ export class Transfer {
   async initiate(
     data: InitiateTransfer,
   ): Promise<TransferInitiated | BadRequest> {
-    return await this.http.post(
-      '/transfer',
-      JSON.stringify(data),
-    );
+    return await this.http.post('/transfer', JSON.stringify(data));
   }
 
   /**
@@ -56,10 +53,7 @@ export class Transfer {
   async bulk(
     data: InitiateBulkTransfer,
   ): Promise<BulkTransferInitiated | BadRequest> {
-    return await this.http.post(
-      '/transfer/bulk',
-      JSON.stringify(data),
-    );
+    return await this.http.post('/transfer/bulk', JSON.stringify(data));
   }
 
   async list(
@@ -71,14 +65,10 @@ export class Transfer {
   }
 
   async fetch(idOrCode: string): Promise<FetchTransfer | BadRequest> {
-    return await this.http.get(
-      `/transfer/${idOrCode}`,
-    );
+    return await this.http.get(`/transfer/${idOrCode}`);
   }
 
   async verify(reference: string): Promise<VerifyTransfer | BadRequest> {
-    return await this.http.get(
-      `transfer/verify/${reference}`,
-    );
+    return await this.http.get(`transfer/verify/${reference}`);
   }
 }

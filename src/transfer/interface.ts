@@ -38,7 +38,7 @@ export interface InitiateBulkTransfer {
 
 export interface ResendTransferOTP {
   transfer_code: string;
-  reason: 'resend_otp' | 'transfer'
+  reason: 'resend_otp' | 'transfer';
 }
 
 export interface FinalizeTransfer extends Response {
