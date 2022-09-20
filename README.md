@@ -32,7 +32,7 @@ const paystack = new Paystack('secret_key');
 OR
 
 ```javascript
-const { Paystack } = require('paystack-sdk').Paystack;
+const { Paystack } = require('paystack-sdk');
 const paystack = new Paystack('secret_key');
 ```
 
