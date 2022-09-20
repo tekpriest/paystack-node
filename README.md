@@ -54,8 +54,8 @@ All methods use promise meaning you can either use the `async...await` or `then.
 - [x] Settlements
 - [x] Invoices
 - [x] Transaction Recipients
-- [ ] Transfers Control
-- [ ] Bulk Charges
+- [x] Transfers Control
+- [x] Bulk Charges
 - [ ] Control Panel
 - [ ] Disputes
 - [ ] Refunds
