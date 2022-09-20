@@ -1,7 +1,8 @@
 import { Axios } from 'axios';
+import { ChargeCreatedWithAddressResponse, ChargeCreatedWithBirthdayResponse, ChargeCreatedWithOTPResponse, ChargeCreatedWithPendingResponse, ChargeCreatedWithPhoneResponse } from '.';
 import {
-  ChargeCreated,
   ChargeCreatedResponse,
+  ChargeCreatedWithPinResponse,
   CreateCharge,
   SubmitAddress,
   SubmitBirthday,
@@ -23,41 +24,29 @@ export class Charge {
   async create(
     data: CreateCharge,
   ): Promise<ChargeCreatedResponse | BadRequest> {
-    return await this.http.post<ChargeCreatedResponse | BadRequest, any>(
-      '/charge',
-      JSON.stringify(data),
-    );
+    return await this.http.post('/charge', JSON.stringify(data));
   }
 
-  async submitPIN(data: SubmitPIN): Promise<ChargeCreated | BadRequest> {
-    return await this.http.post<ChargeCreatedResponse | BadRequest, any>(
-      '/charge/submit_pin',
-      JSON.stringify(data),
-    );
+  async submitPIN(data: SubmitPIN): Promise<ChargeCreatedWithPinResponse | BadRequest> {
+    return await this.http.post('/charge/submit_pin', JSON.stringify(data));
   }
 
   async submitOTP(
     data: SubmitOTP,
-  ): Promise<ChargeCreatedResponse | BadRequest> {
-    return await this.http.post<ChargeCreatedResponse | BadRequest, any>(
-      '/charge/submit_otp',
-      JSON.stringify(data),
-    );
+  ): Promise<ChargeCreatedWithOTPResponse | BadRequest> {
+    return await this.http.post('/charge/submit_otp', JSON.stringify(data));
   }
 
   async submitPhone(
     data: SubmitPhone,
-  ): Promise<ChargeCreatedResponse | BadRequest> {
-    return await this.http.post<ChargeCreatedResponse | BadRequest, any>(
-      '/charge/submit_phone',
-      JSON.stringify(data),
-    );
+  ): Promise<ChargeCreatedWithPhoneResponse | BadRequest> {
+    return await this.http.post('/charge/submit_phone', JSON.stringify(data));
   }
 
   async submitBirthday(
     data: SubmitBirthday,
-  ): Promise<ChargeCreatedResponse | BadRequest> {
-    return await this.http.post<ChargeCreatedResponse | BadRequest, any>(
+  ): Promise<ChargeCreatedWithBirthdayResponse | BadRequest> {
+    return await this.http.post(
       '/charge/submit_birthday',
       JSON.stringify(data),
     );
@@ -65,21 +54,15 @@ export class Charge {
 
   async submitAddress(
     data: SubmitAddress,
-  ): Promise<ChargeCreatedResponse | BadRequest> {
-    return await this.http.post<ChargeCreatedResponse | BadRequest, any>(
-      '/charge/submit_address',
-      JSON.stringify(data),
-    );
+  ): Promise<ChargeCreatedWithAddressResponse | BadRequest> {
+    return await this.http.post('/charge/submit_address', JSON.stringify(data));
   }
 
   async checkPending(
     reference: string,
-  ): Promise<ChargeCreatedResponse | BadRequest> {
-    return await this.http.get<ChargeCreatedResponse | BadRequest, any>(
-      '/charge/submit_address',
-      {
-        params: { reference },
-      },
-    );
+  ): Promise<ChargeCreatedWithPendingResponse | BadRequest> {
+    return await this.http.get('/charge/submit_address', {
+      params: { reference },
+    });
   }
 }

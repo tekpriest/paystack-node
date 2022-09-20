@@ -24,58 +24,39 @@ export class Subscription {
   async create(
     data: CreateSubscription,
   ): Promise<SubscriptionCreated | BadRequest> {
-    const response = await this.http.post<
-      SubscriptionCreated | BadRequest,
-      any
-    >('/subscription', JSON.stringify(data));
-    return response;
+    return await this.http.post('/subscription', JSON.stringify(data));
   }
 
   async list(
     queryParams?: ListSubscriptionQueryParams,
   ): Promise<ListSubscriptions | BadRequest> {
-    return await this.http.get<ListSubscriptions | BadRequest, any>(
-      '/subscription',
-      { params: { ...queryParams } },
-    );
+    return await this.http.get('/subscription', { params: { ...queryParams } });
   }
 
   async fetch(idOrCode: string): Promise<FetchSubscription | BadRequest> {
-    return await this.http.get<FetchSubscription | BadRequest, any>(
-      `/subscription/${idOrCode}`,
-    );
+    return await this.http.get(`/subscription/${idOrCode}`);
   }
 
   async enable(
     data: EnableOrDisableSubscription,
   ): Promise<Response | BadRequest> {
-    return await this.http.post<Response | BadRequest, any>(
-      '/subscription/enable',
-      JSON.stringify(data),
-    );
+    return await this.http.post('/subscription/enable', JSON.stringify(data));
   }
   async disable(
     data: EnableOrDisableSubscription,
   ): Promise<Response | BadRequest> {
-    return await this.http.post<Response | BadRequest, any>(
-      '/subscription/disable',
-      JSON.stringify(data),
-    );
+    return await this.http.post('/subscription/disable', JSON.stringify(data));
   }
 
   async generateSubscriptionLink(
     code: string,
   ): Promise<GenerateSubscriptionLink | BadRequest> {
-    return await this.http.get<GenerateSubscriptionLink | BadRequest, any>(
-      `/subscription/${code}/manage/link`,
-    );
+    return await this.http.get(`/subscription/${code}/manage/link`);
   }
 
   async sendUpdateSubscriptionLink(
     code: string,
   ): Promise<Response | BadRequest> {
-    return await this.http.post<Response | BadRequest, any>(
-      `/subscription/${code}/manage/email`,
-    );
+    return await this.http.post(`/subscription/${code}/manage/email`);
   }
 }

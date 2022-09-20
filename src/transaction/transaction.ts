@@ -39,98 +39,74 @@ export class Transaction {
   async initialize(
     data: InitializeTransaction,
   ): Promise<TransactionInitialized | BadRequest> {
-    const response = await this.http.post<
-      TransactionInitialized | BadRequest,
-      any
-    >('/transaction/initialize', JSON.stringify(data));
-    return response;
+    return await this.http.post(
+      '/transaction/initialize',
+      JSON.stringify(data),
+    );
   }
   async verify(
     reference: string,
   ): Promise<GetTransactionResponse | BadRequest> {
-    const response = await this.http.get<
-      GetTransactionResponse | BadRequest,
-      any
-    >('/transaction/verify', {
+    return await this.http.get('/transaction/verify', {
       params: { reference },
     });
-    return response;
   }
   async list(
     queryParams?: ListTransactionQueryParams,
   ): Promise<ListTransactions | BadRequest> {
-    const response = await this.http.get<ListTransactions | BadRequest, any>(
-      '/transaction',
-      {
-        params: { ...queryParams },
-      },
-    );
-    return response;
+    return await this.http.get('/transaction', {
+      params: { ...queryParams },
+    });
   }
 
   async fetch(id: string): Promise<GetTransactionResponse | BadRequest> {
-    const response = await this.http.get<
-      GetTransactionResponse | BadRequest,
-      any
-    >(`/transaction/:${id}`);
-    return response;
+    return await this.http.get(`/transaction/:${id}`);
   }
 
   async chargeAuthorization(
     data: ChargeAuthorization,
   ): Promise<GetTransactionResponse | BadRequest> {
-    const response = await this.http.post<
-      GetTransactionResponse | BadRequest,
-      any
-    >('/transaction/charge_authorization', JSON.stringify(data));
-    return response;
+    return await this.http.post(
+      '/transaction/charge_authorization',
+      JSON.stringify(data),
+    );
   }
 
   async checkAuthorization(
     data: CheckAuthorization,
   ): Promise<CheckAuthorizationResponse | BadRequest> {
-    const response = await this.http.post<
-      CheckAuthorizationResponse | BadRequest,
-      any
-    >('/transaction/check_authorization', JSON.stringify(data));
-    return response;
+    return await this.http.post(
+      '/transaction/check_authorization',
+      JSON.stringify(data),
+    );
   }
 
   async viewTimeline(id: string): Promise<Timeline | BadRequest> {
-    return await this.http.get<Timeline | BadRequest, any>(
-      `/transaction/timeline/${id}`,
-    );
+    return await this.http.get(`/transaction/timeline/${id}`);
   }
 
   async total(
     queryParams: ListTransactionQueryParams,
   ): Promise<ListTransactions | BadRequest> {
-    return await this.http.get<ListTransactions | BadRequest, any>(
-      '/transaction/totals',
-      {
-        params: { ...queryParams },
-      },
-    );
+    return await this.http.get('/transaction/totals', {
+      params: { ...queryParams },
+    });
   }
 
   async export(
     queryParams: ListTransactionQueryParams,
   ): Promise<ExportTransaction | BadRequest> {
-    return await this.http.get<ExportTransaction | BadRequest, any>(
-      '/transaction/export',
-      {
-        params: { ...queryParams },
-      },
-    );
+    return await this.http.get('/transaction/export', {
+      params: { ...queryParams },
+    });
   }
 
   async partialDebit(
     data: PartialDebit,
   ): Promise<PartialDebitResponse | BadRequest> {
-    const response = await this.http.post(
+    return await this.http.post(
       '/transaction/partial_debit',
       JSON.stringify(data),
     );
-    return JSON.parse(response.data);
   }
 }

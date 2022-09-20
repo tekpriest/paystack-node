@@ -26,30 +26,22 @@ export class Product {
   }
 
   async create(data: CreateProduct): Promise<ProductCreated | BadRequest> {
-    return await this.http.post<ProductCreated | BadRequest, any>(
-      '/product',
-      JSON.stringify(data),
-    );
+    return await this.http.post('/product', JSON.stringify(data));
   }
   async list(
     queryParams?: ListProductQueryParams,
   ): Promise<ListProducts | BadRequest> {
-    return await this.http.get<ListProducts | BadRequest, any>('/product', {
+    return await this.http.get('/product', {
       params: { ...queryParams },
     });
   }
   async fetch(id: string): Promise<FetchProduct | BadRequest> {
-    return await this.http.get<FetchProduct | BadRequest, any>(
-      `/product/${id}`,
-    );
+    return await this.http.get(`/product/${id}`);
   }
   async update(
     id: string,
     data: CreateProduct,
   ): Promise<UpdateProduct | BadRequest> {
-    return await this.http.put<UpdateProduct | BadRequest, any>(
-      `/product/${id}`,
-      JSON.stringify(data),
-    );
+    return await this.http.put(`/product/${id}`, JSON.stringify(data));
   }
 }
