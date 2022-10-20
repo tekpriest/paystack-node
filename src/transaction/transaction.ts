@@ -47,7 +47,7 @@ export class Transaction {
   async verify(
     reference: number,
   ): Promise<GetTransactionResponse | BadRequest> {
-    return await this.http.get(`/transaction/verify/:${reference}`);
+    return await this.http.get(`/transaction/verify/${reference}`);
   }
   async list(
     queryParams?: ListTransactionQueryParams,
