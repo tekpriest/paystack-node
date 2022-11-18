@@ -30,8 +30,7 @@ export class Plan {
    * @returns {Promise<PlanResponse | BadRequest>}
    */
   async create(data: CreatePlan): Promise<PlanResponse | BadRequest> {
-    const response = await this.http.post('/plan', JSON.stringify(data));
-    return JSON.parse(response.data);
+    return await this.http.post('/plan', JSON.stringify(data));
   }
   /**
    * ### List Plans
@@ -42,10 +41,9 @@ export class Plan {
   async list(
     queryParams?: ListPlanQueryParams,
   ): Promise<PlanResponse | BadRequest> {
-    const response = await this.http.get('/plan', {
+    return await this.http.get('/plan', {
       params: { ...queryParams },
     });
-    return JSON.parse(response.data);
   }
   /**
    * ### Fetch Plan
@@ -54,8 +52,7 @@ export class Plan {
    * @returns {Promise<PlanResponse | BadRequest>}
    */
   async fetch(id: string): Promise<PlanResponse | BadRequest> {
-    const response = await this.http.get(`/plan/${id}`);
-    return JSON.parse(response.data);
+    return await this.http.get(`/plan/${id}`);
   }
   /**
    * ### Update Plan
@@ -68,7 +65,6 @@ export class Plan {
     id: string,
     data: UpdatePlan,
   ): Promise<PlanResponse | BadRequest> {
-    const response = await this.http.put(`/plan/${id}`, JSON.stringify(data));
-    return JSON.parse(response.data);
+    return await this.http.put(`/plan/${id}`, JSON.stringify(data));
   }
 }
