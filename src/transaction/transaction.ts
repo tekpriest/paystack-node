@@ -45,7 +45,7 @@ export class Transaction {
     );
   }
   async verify(
-    reference: number,
+    reference: string,
   ): Promise<GetTransactionResponse | BadRequest> {
     return await this.http.get(`/transaction/verify/${reference}`);
   }
