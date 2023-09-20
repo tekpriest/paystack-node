@@ -14,6 +14,7 @@ import { SubAccount } from './subaccounts/subaccount';
 import { Subscription } from './subscription/subscription';
 import { Transaction } from './transaction/transaction';
 import { Transfer } from './transfer/transfer';
+import { BulkCharge } from './bulkcharge/bulkcharge';
 
 /**
  * Paystack SDK
@@ -22,6 +23,7 @@ import { Transfer } from './transfer/transfer';
 
 export class Paystack {
   private readonly http: Axios;
+  public bulkcharge: BulkCharge;
   public charge: Charge;
   public customer: Customer;
   public dedicated: DedicatedAccount;
@@ -49,6 +51,7 @@ export class Paystack {
       (response) => (response.data = JSON.parse(response.data)),
     );
 
+    this.bulkcharge = new BulkCharge(this.http);
     this.charge = new Charge(this.http);
     this.customer = new Customer(this.http);
     this.dedicated = new DedicatedAccount(this.http);
