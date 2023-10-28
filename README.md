@@ -59,7 +59,7 @@ All methods use promise meaning you can either use the `async...await` or `then.
 - [ ] Control Panel
 - [ ] Disputes
 - [ ] Refunds
-- [ ] Verification
+- [x] Verification
 - [ ] Miscellaneous
 
 ## CONTRIBUTING
