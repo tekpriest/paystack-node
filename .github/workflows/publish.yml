@@ -23,7 +23,7 @@ jobs:
 
           npm version patch
 
-          git push && git push --tags
+          git push -f && git push --tags -f
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
