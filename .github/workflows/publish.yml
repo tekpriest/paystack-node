@@ -9,6 +9,9 @@ on:
 
 jobs:
   build:
+    env:
+      RELEASE_TYPE: ${{ github.event.inputs.release-type }}
+      
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -29,8 +32,6 @@ jobs:
         run: |
           echo "NEW_VERSION=$(npm --no-git-tag-version version $RELEASE_TYPE)" >> $GITHUB_ENV
           echo "RELEASE_TAG=latest" >> $GITHUB_ENV
-        env:
-          RELEASE_TYPE: ${{ github.event.inputs.release-type }}
 
       # Bump package pre-release version
       # Use tag beta for pre-release versions
@@ -39,8 +40,8 @@ jobs:
         run: |
           echo "NEW_VERSION=$(npm --no-git-tag-version --preid=beta version $RELEASE_TYPE)" >> $GITHUB_ENV
           echo "RELEASE_TAG=beta" >> $GITHUB_ENV
-        env:
-          RELEASE_TYPE: ${{ github.event.inputs.release-type }}
+        # env:
+        #   RELEASE_TYPE: ${{ github.event.inputs.release-type }}
 
       # Update changelog unreleased section with new version
       - name: Update changelog
