@@ -27,3 +27,10 @@
 - 🐞 FIX(main entry file):
 - 📦 NEW(set up sdk):
 - Initial commit
+
+## [Unreleased]
+- Expose `bulkcharge` module
+- Add `verification` module
+
+### Added
+- Automatic publish
