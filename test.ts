@@ -14,4 +14,16 @@ const paystack = new Paystack(
 //     last_name: 'Doe',
 //   })
 // .then((c) => console.log(c));
-paystack.transaction.list().then((t) => console.log(t.data.length));
+// paystack.transaction.list().then((t) => console.log(t.data.length));
+
+/* 
+  Test by devFresher
+ */
+paystack.verification
+  .resolveAccount({
+    account_number: '8101424375',
+    bank_code: '999992',
+  })
+  .then((resolved) => {
+    console.log(resolved);
+  });
