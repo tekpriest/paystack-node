@@ -9,7 +9,7 @@ import {
 import { BadRequest } from '../interface';
 
 export class Refund {
-  http: Axios;
+  private http: Axios;
   constructor(http: Axios) {
     this.http = http;
   }

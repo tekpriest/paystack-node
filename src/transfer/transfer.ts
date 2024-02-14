@@ -18,7 +18,7 @@ interface BadRequest {
 }
 
 export class Transfer {
-  http: Axios;
+  private http: Axios;
   public control: Control;
   constructor(http: Axios) {
     this.http = http;
