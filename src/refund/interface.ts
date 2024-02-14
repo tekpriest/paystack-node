@@ -1,4 +1,4 @@
-import { QueryParams, Response } from '../interface';
+import { Currency, QueryParams, Response } from '../interface';
 import { Transaction } from '../transaction/interface';
 
 export interface CreateRefund {
@@ -17,7 +17,7 @@ export interface CreateRefund {
   /**
    * Any of the supported currency
    */
-  currency?: string;
+  currency?: Currency;
 
   /**
    * Customer reason
@@ -39,7 +39,7 @@ export interface ListRefundQueryParams extends QueryParams {
   /**
    * Any of the supported currency
    */
-  currency: string;
+  currency: Currency;
 }
 
 export interface ListRefundsResponse extends Response {
