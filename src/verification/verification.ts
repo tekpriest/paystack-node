@@ -3,18 +3,13 @@ import {
   ResolveAccount,
   AccountResolved,
   ValidateAccount,
-  AccountVerified,
-  BinResolved,
+  AccountVerifiedResponse,
+  BinResolvedResponse,
 } from './interface';
-
-interface BadRequest {
-  status: boolean;
-  message: string;
-  data: null;
-}
+import { BadRequest } from '../interface';
 
 /**
- * # Verification
+ * ## Verification
  * The Verification API allows you perform KYC processes.
  */
 export class Verification {
@@ -24,7 +19,7 @@ export class Verification {
   }
 
   /**
-   * # Resolve Account
+   * #### Resolve Account
    * Confirm an account belongs to the right customer
    * @param {ResolveAccount} data **Query Param**
    */
@@ -35,24 +30,24 @@ export class Verification {
   }
 
   /**
-   * # Validate Account
+   * #### Validate Account
    * Confirm the authenticity of a customer's account number
    * before sending money
    * @param {ValidateAccount} data **Data Param**
    */
   async validateAccount(
     data: ValidateAccount,
-  ): Promise<AccountVerified | BadRequest> {
+  ): Promise<AccountVerifiedResponse | BadRequest> {
     return await this.http.post('/bank/validate', JSON.stringify(data));
   }
 
   /**
-   * # Resolve Card BIN
+   * #### Resolve Card BIN
    * Get more information about a customer's card
    * using the first 6 characters of the card
    * @param {string} bin **Path Param**
    */
-  async resolveCard(bin: number): Promise<BinResolved | BadRequest> {
+  async resolveCard(bin: number): Promise<BinResolvedResponse | BadRequest> {
     return await this.http.get(`/decision/bin/${bin}`);
   }
 }
