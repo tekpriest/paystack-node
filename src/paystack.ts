@@ -16,6 +16,7 @@ import { Transaction } from './transaction/transaction';
 import { Transfer } from './transfer/transfer';
 import { BulkCharge } from './bulkcharge/bulkcharge';
 import { Verification } from './verification/verification';
+import { Refund } from './refund/refund';
 
 /**
  * Paystack SDK
@@ -40,6 +41,7 @@ export class Paystack {
   public invoice: Invoice;
   public settlement: Settlement;
   public recipient: Recipient;
+  public refund: Refund;
   public verification: Verification;
   constructor(private readonly key: string) {
     this.http = new Axios({
@@ -69,6 +71,7 @@ export class Paystack {
     this.invoice = new Invoice(this.http);
     this.settlement = new Settlement(this.http);
     this.recipient = new Recipient(this.http);
+    this.refund = new Refund(this.http);
     this.verification = new Verification(this.http);
   }
 }

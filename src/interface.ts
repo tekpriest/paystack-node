@@ -37,3 +37,13 @@ export interface QueryParams {
    */
   to?: Date;
 }
+
+/**
+ * Paystack makes use of the ISO 4217 format for currency codes.
+ * When sending an amount, it must be sent in the subunit of that currency.
+ *
+ * Sending an amount in subunits simply means multiplying the base amount by 100.
+ * For example, if a customer is supposed to make a payment of NGN 100,
+ * you would send 10000 = 100 * 100 in your request.
+ */
+export type Currency = 'NGN' | 'USD' | 'GHS' | 'ZAR' | 'KES';

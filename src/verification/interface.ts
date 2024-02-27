@@ -1,7 +1,4 @@
-export interface Response {
-  status: boolean;
-  message: string;
-}
+import { Response } from '../interface';
 
 export interface ResolveAccount {
   /**
@@ -16,16 +13,12 @@ export interface ResolveAccount {
   bank_code: string;
 }
 
-export enum AccountType {
-  personal = 'personal',
-  business = 'business',
-}
+export type AccountType = 'personal' | 'business';
 
-export enum DocumentType {
-  idNumber = 'identityNumber',
-  passportNumber = 'passportNumber',
-  businessRegNumber = 'businessRegistrationNumber',
-}
+export type DocumentType =
+  | 'identityNumber'
+  | 'passportNumber'
+  | 'businessRegistrationNumber';
 
 export interface AccountResolved extends Response {
   data: {
@@ -82,7 +75,7 @@ export interface ValidateAccount {
   document_number: string;
 }
 
-export interface AccountVerified extends Response {
+export interface AccountVerifiedResponse extends Response {
   data: {
     /**
      * Verification Status
@@ -96,7 +89,7 @@ export interface AccountVerified extends Response {
   };
 }
 
-export interface BinResolved extends Response {
+export interface BinResolvedResponse extends Response {
   data: {
     bin: string;
     brand: string;
