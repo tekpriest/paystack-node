@@ -139,8 +139,9 @@ export interface DedicatedAccount {
 export interface UpdateCustomer {
   first_name: string;
   last_name: string;
-  phone: string;
-  metadata: Record<string, unknown>;
+  email: string;
+  phone?: string;
+  metadata?: Record<string, unknown>;
 }
 
 export interface SetRiskAction {
