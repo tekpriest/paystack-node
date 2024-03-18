@@ -31,17 +31,7 @@ export interface Response {
 }
 
 export interface SubscriptionCreated extends Response {
-  data: {
-    customer: number;
-    plan: number;
-    integration: number;
-    domain: string;
-    start: number;
-    status: string;
-    quantity: number;
-    amount: number;
-    authorization: Authorization;
-  };
+  data: Subscription;
 }
 
 export interface ListSubscriptions extends Response {
