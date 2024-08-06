@@ -1,3 +1,5 @@
+import { Response } from "../interface";
+
 export interface InitiateTransfer {
   /**
    * Where should we transfer from? Only `balance` for now
