@@ -1,4 +1,4 @@
-import { Response } from "../interface";
+import { Response } from '../interface';
 
 export interface InitiateTransfer {
   /**
