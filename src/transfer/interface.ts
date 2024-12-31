@@ -93,7 +93,7 @@ export interface ListTransferQueryParams {
   to?: Date;
 }
 
-interface Transfer {
+export interface Transfer {
   integration: number;
   domain: string;
   amount: number;
