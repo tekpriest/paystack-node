@@ -96,7 +96,7 @@ export interface Transaction {
   status: string;
   reference: string;
   domain: string;
-  metadata: number;
+  metadata: Record<string, unknown>;
   gateway_response: string;
   message?: string;
   channel: string;

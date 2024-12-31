@@ -1,5 +1,5 @@
 import { Axios } from 'axios';
-import { BadRequest } from '../interface';
+import { BadRequest, Response } from '../interface';
 import { ListCustomersResponse } from './interface';
 import {
   CreateCustomer,

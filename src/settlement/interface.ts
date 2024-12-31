@@ -1,5 +1,5 @@
 import { CustomerSubAccount } from '../customer/interface';
-import { Meta, QueryParams } from '../interface';
+import { Meta, QueryParams, Response } from '../interface';
 
 export interface SettlementQueryParams extends QueryParams {
   subaccount?: string;

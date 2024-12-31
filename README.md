@@ -2,7 +2,10 @@
 
 #### Why Another [Paystack](https://paystack.com) Package?
 
-Other packages are either outdated or don't support types.
+Existing Paystack libraries are either outdated, lack modern features, or fail to support TypeScript. This package addresses these gaps by providing:  
+-  Full TypeScript support for type safety and better developer experience.
+-  A modern, actively maintained library aligned with Paystack’s latest API updates.
+-  Clean, intuitive APIs designed for ease of use.  
 
 ### Installation
 
