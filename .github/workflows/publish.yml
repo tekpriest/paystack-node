@@ -1,8 +1,8 @@
 name: Publish Package
 
 on:
-release:
-  types: [published]
+  release:
+    types: [published]
 
 jobs:
   build:
