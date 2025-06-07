@@ -90,11 +90,11 @@ export interface TransactionInitialized extends Response {
 }
 
 export interface Transaction {
-  id:number;
+  id: number;
   amount: number;
   currency: string;
   paid_at: Date;
-  created_at:Date;
+  created_at: Date;
   status: string;
   reference: string;
   domain: string;
