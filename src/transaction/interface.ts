@@ -90,9 +90,11 @@ export interface TransactionInitialized extends Response {
 }
 
 export interface Transaction {
+  id:number;
   amount: number;
   currency: string;
-  transaction_date: Date;
+  paid_at: Date;
+  created_at:Date;
   status: string;
   reference: string;
   domain: string;
@@ -124,7 +126,7 @@ export interface Transaction {
   authorization: Authorization;
   customer: Customer;
   pin: string;
-  required_amount: number;
+  requested_amount: number;
 }
 
 export interface GetTransactionResponse extends Response {
