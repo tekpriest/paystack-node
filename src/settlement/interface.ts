@@ -11,6 +11,7 @@ export interface Settlement {
   settlement_date: Date;
   domain: string;
   total_amount: number;
+  total_fees:number;
   status: string;
   id: number;
   createdAt: Date;
