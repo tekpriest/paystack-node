@@ -22,7 +22,7 @@ export class Settlement {
     id: string,
     queryParams: QueryParams,
   ): Promise<ListSettlementTransactionsResponse | BadRequest> {
-    return await this.http.get(`/settlement/$[id]/transactions`, {
+    return await this.http.get(`/settlement/${id}/transactions`, {
       params: { ...queryParams },
     });
   }
