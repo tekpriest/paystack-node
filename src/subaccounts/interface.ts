@@ -56,7 +56,7 @@ export interface CreateUpdateSubAccount {
   metadata?: string;
 }
 
-interface SubAccount {
+export interface SubAccount {
   id: number;
   domain: string;
   subaccount_code: string;
