@@ -1,5 +1,7 @@
-import { CustomerSubAccount } from '../customer/interface';
+import { Authorization } from '../charge/interface';
+import { Customer, CustomerSubAccount } from '../customer/interface';
 import { Meta, QueryParams, Response } from '../interface';
+import { SubAccount } from '../subaccounts/interface';
 
 export interface SettlementQueryParams extends QueryParams {
   subaccount?: string;
@@ -11,6 +13,7 @@ export interface Settlement {
   settlement_date: Date;
   domain: string;
   total_amount: number;
+  total_processed: number;
   total_fees: number;
   status: string;
   id: number;
@@ -23,7 +26,31 @@ export interface ListSettlementsResponse extends Response {
   data: Settlement[];
   meta: Meta;
 }
-
+type CustomerType = Pick<
+  Customer,
+  | 'id'
+  | 'first_name'
+  | 'last_name'
+  | 'email'
+  | 'phone'
+  | 'metadata'
+  | 'customer_code'
+  | 'risk_action'
+>;
+type SubAccountType = Pick<
+  SubAccount,
+  | 'id'
+  | 'subaccount_code'
+  | 'business_name'
+  | 'description'
+  | 'primary_contact_name'
+  | 'primary_contact_email'
+  | 'primary_contact_phone'
+  | 'metadata'
+  | 'percentage_charge'
+  | 'settlement_bank'
+  | 'account_number'
+>;
 export interface SettlementTransaction {
   id: number;
   reference: string;
@@ -36,6 +63,10 @@ export interface SettlementTransaction {
   message?: string;
   gateway_response: string;
   fees: number;
+  metadata: Record<string,unknown>;
+  customer: CustomerType;
+  authorization: Authorization
+  subaccount: SubAccountType;
 }
 
 export interface ListSettlementTransactionsResponse extends Response {
