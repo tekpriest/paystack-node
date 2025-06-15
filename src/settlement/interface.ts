@@ -64,7 +64,7 @@ export interface SettlementTransaction {
   gateway_response: string;
   fees: number;
   metadata: Record<string,unknown>;
-  customer: CustomerResponse;
+  customer: CustomerType;
   authorization: Authorization
   subaccount: SubAccountResponse;
 }
