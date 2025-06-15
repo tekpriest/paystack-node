@@ -26,29 +26,30 @@ export interface ListSettlementsResponse extends Response {
   data: Settlement[];
   meta: Meta;
 }
-type CustomerResponse = Omit<Customer,
-  'transactions' |
-  'subscriptions' |
-  'authorizations' |
-  'domain' |
-  'international_format_phone' |
-  'integration' |
-  'createdAt' |
-  'updatedAt' |
-  'identified' |
-  'identifications' |
-  'dedicated_account'
+type CustomerType = Pick<
+  Customer,
+  | 'id'
+  | 'first_name'
+  | 'last_name'
+  | 'email'
+  | 'phone'
+  | 'metadata'
+  | 'customer_code'
+  | 'risk_action'
 >;
-type SubAccountResponse = Omit<SubAccount, 
-  'domain' | 
-  'is_verified' | 
-  'settlement_schedule' | 
-  'active' | 
-  'migrate' | 
-  'integration' | 
-  'createdAt' | 
-  'updatedAt' | 
-  'currency'
+type SubAccountType = Pick<
+  SubAccount,
+  | 'id'
+  | 'subaccount_code'
+  | 'business_name'
+  | 'description'
+  | 'primary_contact_name'
+  | 'primary_contact_email'
+  | 'primary_contact_phone'
+  | 'metadata'
+  | 'percentage_charge'
+  | 'settlement_bank'
+  | 'account_number'
 >;
 export interface SettlementTransaction {
   id: number;
