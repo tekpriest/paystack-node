@@ -66,7 +66,7 @@ export interface SettlementTransaction {
   metadata: Record<string,unknown>;
   customer: CustomerType;
   authorization: Authorization
-  subaccount: SubAccountResponse;
+  subaccount: SubAccountType;
 }
 
 export interface ListSettlementTransactionsResponse extends Response {
