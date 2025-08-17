@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
+    "lib": [
+      "es2021"
+    ],
     "experimentalDecorators": true,
-    "target": "es6",
+    "target": "es2021",
     "module": "commonjs",
     "moduleResolution": "node",
     "declaration": true,
@@ -14,7 +17,8 @@
     "types": [
       "jest",
       "node"
-    ]
+    ],
+    "skipLibCheck": true
   },
   "include": [
     "src/**/*.ts"

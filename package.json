@@ -9,7 +9,7 @@
   "scripts": {
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "tslint -p tsconfig.json",
+    "lint": "eslint . --ext .ts",
     "prepare": "npm run build",
     "prepublishOnly": "npm run lint",
     "preversion": "npm run lint",
@@ -28,9 +28,7 @@
     "prettier": "2.5.1",
     "ts-jest": "^29.4.1",
     "ts-node": "10.4.0",
-    "tslint": "6.1.3",
-    "tslint-config-prettier": "1.18.0",
-    "typescript": "4.5.2",
+    "typescript": "5.5",
     "typescript-eslint": "0.0.1-alpha.0"
   },
   "dependencies": {
