@@ -6,7 +6,7 @@ export type Bank = {
   code: string;
   longcode: string;
   gateway?: string;
-  pay_with_bank: boolean
+  pay_with_bank: boolean;
   active: boolean;
   is_deleted: boolean;
   country: string;
@@ -15,16 +15,20 @@ export type Bank = {
   id: number;
   createdAt: Date;
   updatedAt: Date;
-}
+};
 
-type RelationshipType = "currency" | "integration_feature" | "integration_type" | "payment_method"
+type RelationshipType =
+  | 'currency'
+  | 'integration_feature'
+  | 'integration_type'
+  | 'payment_method';
 
 type Relationship = {
   [K in RelationshipType]: {
     type: K;
     data: string[];
-  }
-}
+  };
+};
 
 export type Country = {
   id: number;
@@ -33,13 +37,13 @@ export type Country = {
   default_currency_code: string;
   integration_defaults: Record<string, any>;
   relationships: Relationship;
-}
+};
 
 export type State = {
   name: string;
   slug: string;
   abbreviation: string;
-}
+};
 
 export type ListBanksQueryParams = {
   /**
@@ -113,7 +117,7 @@ export type ListBanksQueryParams = {
    * The returned value can be used in identifying institutions on NIP.
    */
   include_nip_sort_code?: string;
-}
+};
 
 export interface BanksResponse extends Response {
   data: Bank[];

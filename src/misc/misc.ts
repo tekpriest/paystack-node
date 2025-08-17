@@ -1,6 +1,11 @@
-import { Axios } from "axios";
-import { BadRequest } from "../interface";
-import { BanksResponse, CountriesResponse, ListBanksQueryParams, StatesResponse } from "./interface";
+import { Axios } from 'axios';
+import { BadRequest } from '../interface';
+import {
+  BanksResponse,
+  CountriesResponse,
+  ListBanksQueryParams,
+  StatesResponse,
+} from './interface';
 
 export class Misc {
   private http: Axios;
@@ -8,16 +13,20 @@ export class Misc {
     this.http = http;
   }
 
-  async banks(query?: ListBanksQueryParams): Promise<BanksResponse | BadRequest> {
-    return await this.http.get('/bank', { params: { ...query } })
+  async banks(
+    query?: ListBanksQueryParams,
+  ): Promise<BanksResponse | BadRequest> {
+    return await this.http.get('/bank', { params: { ...query } });
   }
 
   async countries(): Promise<CountriesResponse | BadRequest> {
-    return await this.http.get('/country')
+    return await this.http.get('/country');
   }
 
   async states(country?: string): Promise<StatesResponse | BadRequest> {
-    const query: { country?: string } = country ? { country } : {}
-    return await this.http.get('/address_verification/states', { params: query })
+    const query: { country?: string } = country ? { country } : {};
+    return await this.http.get('/address_verification/states', {
+      params: query,
+    });
   }
 }
