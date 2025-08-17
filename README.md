@@ -63,7 +63,7 @@ All methods use promise meaning you can either use the `async...await` or `then.
 - [ ] Disputes
 - [x] Refunds
 - [x] Verification
-- [ ] Miscellaneous
+- [x] Miscellaneous
 
 ## CONTRIBUTING
 

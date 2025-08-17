@@ -1,4 +1,4 @@
-import { Axios } from 'axios';
+import { AxiosInstance } from 'axios';
 import { ApplePay } from './apple/apple';
 import { Charge } from './charge/charge';
 import { Customer } from './customer/customer';
@@ -17,6 +17,8 @@ import { Transfer } from './transfer/transfer';
 import { BulkCharge } from './bulkcharge/bulkcharge';
 import { Verification } from './verification/verification';
 import { Refund } from './refund/refund';
+import { Misc } from './misc/misc';
+import axios from 'axios';
 
 /**
  * Paystack SDK
@@ -24,7 +26,7 @@ import { Refund } from './refund/refund';
  */
 
 export class Paystack {
-  private readonly http: Axios;
+  private readonly http: AxiosInstance;
   public bulkcharge: BulkCharge;
   public charge: Charge;
   public customer: Customer;
@@ -43,8 +45,9 @@ export class Paystack {
   public recipient: Recipient;
   public refund: Refund;
   public verification: Verification;
+  public misc: Misc;
   constructor(private readonly key: string) {
-    this.http = new Axios({
+    this.http = axios.create({
       baseURL: 'https://api.paystack.co',
       headers: {
         Authorization: `Bearer ${this.key}`,
@@ -73,5 +76,6 @@ export class Paystack {
     this.recipient = new Recipient(this.http);
     this.refund = new Refund(this.http);
     this.verification = new Verification(this.http);
+    this.misc = new Misc(this.http);
   }
 }
