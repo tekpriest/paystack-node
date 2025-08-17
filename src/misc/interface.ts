@@ -22,7 +22,7 @@ type RelationshipType = "currency" | "integration_feature" | "integration_type" 
 type Relationship = {
   [K in RelationshipType]: {
     type: K;
-    data: Array<string>;
+    data: string[];
   }
 }
 
@@ -116,13 +116,13 @@ export type ListBanksQueryParams = {
 }
 
 export interface BanksResponse extends Response {
-  data: Array<Bank>;
+  data: Bank[];
 }
 
 export interface CountriesResponse extends Response {
-  data: Array<Country>;
+  data: Country[];
 }
 
 export interface StatesResponse extends Response {
-  data: Array<State>;
+  data: State[];
 }
