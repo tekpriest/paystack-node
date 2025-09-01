@@ -1,4 +1,4 @@
-import { AxiosInstance } from 'axios';
+import { AxiosInstance, AxiosResponse } from 'axios';
 import { ApplePay } from './apple/apple';
 import { Charge } from './charge/charge';
 import { Customer } from './customer/customer';
@@ -54,9 +54,7 @@ export class Paystack {
         'Content-Type': 'application/json',
       },
     });
-    this.http.interceptors.response.use(
-      (response) => (response.data = JSON.parse(response.data)),
-    );
+    this.http.interceptors.response.use((response: AxiosResponse) => response.data);
 
     this.bulkcharge = new BulkCharge(this.http);
     this.charge = new Charge(this.http);
