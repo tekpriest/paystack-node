@@ -54,7 +54,9 @@ export class Paystack {
         'Content-Type': 'application/json',
       },
     });
-    this.http.interceptors.response.use((response: AxiosResponse) => response.data);
+    this.http.interceptors.response.use(
+      (response: AxiosResponse) => response.data,
+    );
 
     this.bulkcharge = new BulkCharge(this.http);
     this.charge = new Charge(this.http);
