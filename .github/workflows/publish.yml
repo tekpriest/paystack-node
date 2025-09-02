@@ -2,8 +2,8 @@ name: Publish Package
 
 on:
   push:
-    tags:
-      - 'v.*.*'
+    branches:
+      - main
 
 jobs:
   publish:
@@ -30,16 +30,35 @@ jobs:
       - name: Build
         run: npm run build --if-present
 
-      - name: Get package version
-        id: package-version
-        run: echo "version=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
+      - name: Version check
+        id: check-version
+        run: |
+          PACKAGE_NAME=$(node -p "require('./package.json').name")
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          NPM_VERSION=$(npm view $PACKAGE_NAME) versions --json
+
+          if $NPM_VERSION | grep -q "\"$CURRENT_VERSION\""; then
+            echo "version_exists=true" >> $GITHUB_OUTPUT
+            echo "Version $CURRENT_VERSION already exists on npm"
+          else
+            echo "version_exists=false" >> $GITHUB_OUTPUT
+            echo "Version $CURRENT_VERSION is new and will be published"
+          fi
 
       - name: Publish
+        if: steps.check-version.outputs.version_exists == 'false'
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      - name: Get package version
+        id: package-version
+        run: echo "version=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
+
       - name: Create release
+        if: steps.check-version.outputs.version_exists == 'false'
         uses: softprops/action-gh-release@v2
         with:
           generate_release_notes: true
+          tag_name: v${{ steps.check-version.outputs.version
+          release_name: Release ${{ steps.check-version.outputs.version
