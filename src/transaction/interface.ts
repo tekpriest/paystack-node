@@ -179,7 +179,7 @@ export interface ListTransactionQueryParams {
    * Specify an ID for the customer whose transactions
    * you want to retrieve
    */
-  customer?: number;
+  customer?: string;
   /**
    * Filter transactions by status ('failed', 'success', 'abandoned')
    */
