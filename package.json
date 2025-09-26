@@ -42,6 +42,6 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tekpriest/paystack-node.git"
+    "url": "git+https://github.com/edze-worla-alex/paystack-sdk.git"
   }
 }
