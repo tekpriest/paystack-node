@@ -79,3 +79,5 @@ export class Paystack {
     this.misc = new Misc(this.http);
   }
 }
+
+export default Paystack;
