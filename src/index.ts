@@ -1,4 +1,4 @@
-import Paystack from "./paystack";
+import Paystack from './paystack';
 
 export default Paystack;
-export { Paystack } from "./paystack";
+export { Paystack } from './paystack';
