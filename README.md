@@ -21,6 +21,8 @@ For Typescript
 
 ```typescript
 import {Paystack} from 'paystack-sdk';
+// or
+import Paystack from 'paystack-sdk';
 
 const paystack = new Paystack("secret_key");
 ```
@@ -29,6 +31,9 @@ For Javscript
 
 ```javascript
 const Paystack = require('paystack-sdk').Paystack;
+// or
+const Paystack = require('paystack-sdk');
+
 const paystack = new Paystack('secret_key');
 ```
 
@@ -56,14 +61,20 @@ All methods use promise meaning you can either use the `async...await` or `then.
 - [x] Transaction Splits
 - [x] Settlements
 - [x] Invoices
-- [x] Transaction Recipients
+- [x] Transfer Recipients
 - [x] Transfers Control
 - [x] Bulk Charges
-- [ ] Control Panel
-- [ ] Disputes
 - [x] Refunds
 - [x] Verification
 - [x] Miscellaneous
+- [ ] Disputes
+- [ ] Control Panel
+- [ ] Terminal
+- [ ] Virtual Terminal
+- [ ] Direct Debit
+- [ ] Payment Pages
+- [ ] Payment Requests
+- [ ] Integration
 
 ## CONTRIBUTING
 
