@@ -35,7 +35,7 @@ export type Country = {
   name: string;
   iso_code: string;
   default_currency_code: string;
-  integration_defaults: Record<string, any>;
+  integration_defaults: Record<string, unknown>;
   relationships: Relationship;
 };
 
@@ -50,7 +50,7 @@ export type ListBanksQueryParams = {
    * The country from which to obtain the list of supported banks.
    * Accepted values are: `ghana`, `kenya`, `nigeria`, `south africa`
    */
-  country?: string;
+  country?: 'ghana' | 'kenya' | 'nigeria' | 'south africa';
 
   /**
    * Flag to enable cursor pagination on the endpoint
@@ -98,19 +98,19 @@ export type ListBanksQueryParams = {
    * The gateway type of the bank.
    * It can be one of these: `['emandate', 'digitalbankmandate']`
    */
-  gateway?: string;
+  gateway?: 'emandate' | 'digitalbankmandate';
 
   /**
    * Type of financial channel.
    * For Ghanaian channels, please use either **mobile_money** for
    * mobile money channels OR **ghipps** for bank channels
    */
-  type?: string;
+  type?: 'mobile_money' | 'ghipps';
 
   /**
    * One of the [supported currency](https://paystack.com/docs/api/#supported-currency)
    */
-  currency?: string;
+  currency?: 'NGN' | 'USD' | 'GHS' | 'ZAR' | 'KES' | 'XOF';
 
   /**
    * A flag that returns Nigerian banks with their nip institution code.

@@ -71,7 +71,7 @@ export interface ListCustomerQueryParams {
   /**
    * Filter transactions by status ('failed', 'success', 'abandoned')
    */
-  status?: string;
+  status?: Status;
   /**
    * A timestamp from which to start listing transaction
    * e.g `2021-10-25T00.00.05.000z`, `2021-12-25`
@@ -190,3 +190,5 @@ export interface ICustomer {
   createdAt: Date;
   updatedAt: Date;
 }
+
+type Status = 'failed' | 'success' | 'abandoned';

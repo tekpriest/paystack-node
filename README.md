@@ -1,30 +1,53 @@
 # Paystack SDK
 
-#### Why Another [Paystack](https://paystack.com) Package?
+<!--toc:start-->
 
-Existing Paystack libraries are either outdated, lack modern features, or fail to support TypeScript. This package addresses these gaps by providing:  
--  Full TypeScript support for type safety and better developer experience.
--  A modern, actively maintained library aligned with Paystack’s latest API updates.
--  Clean, intuitive APIs designed for ease of use.  
+- [Why Another Package?](#why-another-paystack)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Modules](#modules)
+- [CONTRIBUTING](#contributing)
+  <!--toc:end-->
+
+## Why Another [Paystack](https://paystack.com) Package?
+
+Existing Paystack libraries are either outdated, lack modern features,
+or fail to support TypeScript. This package addresses these gaps by providing:
+
+- Full TypeScript support for type safety and better developer experience.
+- A modern, actively maintained library aligned with Paystack’s latest API updates.
+- Clean, intuitive APIs designed for ease of use.
 
 ### Installation
 
 For Yarn
-`yarn add paystack-sdk`
+
+```bash
+yarn add paystack-sdk
+```
 
 For NPM
-`npm install paystack-sdk`
+
+```bash
+npm install paystack-sdk
+```
+
+For Bun
+
+```bash
+bun install paystack-sdk
+```
 
 ### Usage
 
 For Typescript
 
 ```typescript
-import {Paystack} from 'paystack-sdk';
+import { Paystack } from 'paystack-sdk';
 // or
 import Paystack from 'paystack-sdk';
 
-const paystack = new Paystack("secret_key");
+const paystack = new Paystack('secret_key');
 ```
 
 For Javscript
@@ -44,7 +67,8 @@ const { Paystack } = require('paystack-sdk');
 const paystack = new Paystack('secret_key');
 ```
 
-All methods use promise meaning you can either use the `async...await` or `then...catch` or `try...catch`
+All methods use promise meaning you can either use the
+`async...await` or `then...catch` or `try...catch`
 
 ### Modules
 
@@ -82,3 +106,10 @@ If you notice a missing function, or maybe a bug. Please feel free to submit
 a PR. I will take a look at it.
 You will need to fork the repo and create a PR against it with your changes.  
 Thank you :smile:
+
+### TODO
+
+- [ ] Migrate to native fetch
+- [ ] Update interface
+- [ ] Update comments
+- [ ] Integrate tests

@@ -14,25 +14,20 @@
     "prepublishOnly": "npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags",
-    "test": "jest"
+    "postversion": "git push && git push --tags"
   },
   "devDependencies": {
-    "@types/jest": "^30.0.0",
-    "@types/mocha": "^10.0.10",
     "@types/node": "16.11.11",
     "@typescript-eslint/eslint-plugin": "5.36.2",
     "@typescript-eslint/parser": "5.36.2",
     "eslint": "8.6.0",
-    "jest": "^30.0.5",
     "prettier": "2.5.1",
-    "ts-jest": "^29.4.1",
     "ts-node": "10.4.0",
-    "typescript": "5.5",
+    "typescript": "~5.5.4",
     "typescript-eslint": "0.0.1-alpha.0"
   },
   "dependencies": {
-    "axios": "^1.6.7"
+    "axios": "^1.13.2"
   },
   "files": [
     "dist/**/*"
@@ -41,7 +36,8 @@
     "Paystack",
     "Typescript",
     "payment",
-    "node"
+    "node",
+    "sdk"
   ],
   "repository": {
     "type": "git",

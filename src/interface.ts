@@ -46,4 +46,4 @@ export interface QueryParams {
  * For example, if a customer is supposed to make a payment of NGN 100,
  * you would send 10000 = 100 * 100 in your request.
  */
-export type Currency = 'NGN' | 'USD' | 'GHS' | 'ZAR' | 'KES';
+export type ICurrency = 'NGN' | 'USD' | 'GHS' | 'ZAR' | 'KES';

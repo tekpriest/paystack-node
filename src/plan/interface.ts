@@ -1,4 +1,4 @@
-import { Meta } from '../interface';
+import { ICurrency, Meta } from '../interface';
 import { Subscription } from '../subscription/interface';
 
 export interface CreatePlan {
@@ -16,7 +16,7 @@ export interface CreatePlan {
    * Interval in words,
    * Valid intervals are `daily`,`weekly`,`monthly`,`biannually`,`annually`
    */
-  interval?: string;
+  interval?: 'daily' | 'weekly' | 'monthly' | 'biannually' | 'annually';
   /**
    * A description for this plan
    */
@@ -32,10 +32,9 @@ export interface CreatePlan {
    */
   send_sms?: string;
   /**
-   * Currency in which amount is set. Allowed values are
-   * NGN, GHS, ZAR or USD
+   * Currency in which amount is set.
    */
-  currency?: string;
+  currency?: 'NGN' | 'USD' | 'GHS' | 'ZAR' | 'KES' | 'XOF';
   /**
    * Number of invoices to raise during subscription to this plan.
    * Can be overridden by specifying an `invoice_limit` while subscribing
@@ -97,14 +96,12 @@ export interface ListPlanQueryParams {
    */
   page?: number;
   /**
-   * Filter transactions by status ('failed', 'success', 'abandoned')
+   * Filter transactions by status.
    */
   status?: string;
   /**
-   * Filter transactions by amount.
-   * Specify the amount (in **kobo** if currency is `NGN`,
-   * **pesewas**, if currency is `GHS`,
-   * and **cents**, if currency is `ZAR`)
+   * Filter list by plans with specified amount
+   * using the [supported currency](https://paystack.com/docs/api/#supported-currency)
    */
   amount: number;
   /**
@@ -112,6 +109,7 @@ export interface ListPlanQueryParams {
    */
   interval?: number;
 }
+
 export interface UpdatePlan {
   /**
    * Name of plan
@@ -126,7 +124,7 @@ export interface UpdatePlan {
    * Interval in words. Valid intervals are
    * `hourly`,`daily`,weekly`,`monthly`,`biannually`,`annually`.
    */
-  interval: string;
+  interval?: 'daily' | 'weekly' | 'monthly' | 'biannually' | 'annually';
   /**
    * A description for this plan
    */
@@ -142,10 +140,9 @@ export interface UpdatePlan {
    */
   send_sms?: string;
   /**
-   * Currency in which amount is set. Allowed values are
-   * NGN, GHS, ZAR or USD
+   * Currency in which amount is set.
    */
-  currency?: string;
+  currency?: ICurrency
   /**
    * Number of invoices to raise during subscription to this plan.
    * Can be overriden by specifying an `invoice_limit` while subscribing

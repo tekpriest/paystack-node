@@ -2,6 +2,7 @@ import { Axios } from 'axios';
 import { BadRequest } from '../interface';
 import {
   DomainRegisterResponse,
+  ListApplePayQueryParams,
   ListDomainsResponse,
   UnregisterDomainRegisterResponse,
 } from './interface';
@@ -21,8 +22,14 @@ export class ApplePay {
     );
   }
 
-  async listDomains(): Promise<ListDomainsResponse | BadRequest> {
-    return await this.http.get('/apple-pay');
+  async listDomains(
+    queryParams?: ListApplePayQueryParams,
+  ): Promise<ListDomainsResponse | BadRequest> {
+    return await this.http.request({
+      url: '/apple-pay',
+      params: { ...queryParams },
+      method: 'get',
+    });
   }
 
   async unregisterDomain(

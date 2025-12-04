@@ -1,6 +1,5 @@
-import { Meta } from '../interface';
+import { ICurrency, Meta } from '../interface';
 
-export type SplitCurrrencyType = 'GHS' | 'NGN' | 'ZAR' | 'USD';
 export type SplitType = 'percentage' | 'flat';
 
 interface SubAccount {
@@ -22,6 +21,9 @@ export interface SplitSubAccount {
    * This is the sub account code
    */
   subaccount: string;
+  /**
+   * This is the transaction share for the subaccount
+   */
   share: number;
 }
 
@@ -36,9 +38,9 @@ export interface CreateSplit {
    */
   type: SplitType;
   /**
-   * Any of NGN, GHS, ZAR, or USD
+   * Any of the [supported currency](https://paystack.com/docs/api/#supported-currency)
    */
-  currency: SplitCurrrencyType;
+  currency: ICurrency;
   /**
    * A list of object containing subaccount code
    * and number of shares: [{subaccount: ‘ACT_xxxxxxxxxx’, share: xxx},{...}]
@@ -90,7 +92,7 @@ interface TransactionSplit {
   id: number;
   name: string;
   type: string;
-  currency: SplitCurrrencyType;
+  currency: ICurrency
   integration: number;
   domain: string;
   split_code: string;
