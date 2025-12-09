@@ -5,6 +5,8 @@ import {
   ListRefundQueryParams,
   ListRefundsResponse,
   RefundCreatedResponse,
+  RetryRefundResponse,
+  RetryAccountDetails,
 } from './interface';
 import { BadRequest } from '../interface';
 
@@ -15,7 +17,6 @@ export class Refund {
   }
 
   /**
-   * #### Create Refund
    * Initiate a refund on your integration
    */
   async create(
@@ -25,7 +26,6 @@ export class Refund {
   }
 
   /**
-   * #### List Refunds
    * List refunds available on your integration
    */
   async list(
@@ -37,10 +37,18 @@ export class Refund {
   }
 
   /**
-   * #### Fetch Refund
    * Get details of a refund on your integration
    */
-  async fetch(reference: string): Promise<FetchRefundResponse | BadRequest> {
-    return await this.http.get(`/refund/${reference}`);
+  async fetch(id: number): Promise<FetchRefundResponse | BadRequest> {
+    return await this.http.get(`/refund/${id}`);
+  }
+
+  async retry(
+    id: number,
+    data: RetryAccountDetails,
+  ): Promise<RetryRefundResponse | BadRequest> {
+    return await this.http.post(`/refund/retry_with_customer_details/${id}`, {
+      refund_account_details: data,
+    });
   }
 }
