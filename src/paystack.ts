@@ -25,6 +25,12 @@ import axios from 'axios';
  * @author Asaju Enitan <@tPriest>
  */
 
+/**
+ * @deprecated This named export is deprecated and will be removed
+ * in version `4.0.0`.
+ * Use the default export instead:
+ * Use `import Paystack from 'paystack-sdk'`
+ */
 export class Paystack {
   private readonly http: AxiosInstance;
   public bulkcharge: BulkCharge;

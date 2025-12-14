@@ -40,7 +40,9 @@
     "Paystack",
     "Typescript",
     "payment",
-    "node"
+    "node",
+    "API",
+    "naira"
   ],
   "repository": {
     "type": "git",
