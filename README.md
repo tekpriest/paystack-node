@@ -2,10 +2,28 @@
 
 #### Why Another [Paystack](https://paystack.com) Package?
 
-Existing Paystack libraries are either outdated, lack modern features, or fail to support TypeScript. This package addresses these gaps by providing:  
--  Full TypeScript support for type safety and better developer experience.
--  A modern, actively maintained library aligned with Paystack’s latest API updates.
--  Clean, intuitive APIs designed for ease of use.  
+Existing Paystack libraries are either outdated, lack modern features, or fail to support TypeScript. This package addresses these gaps by providing:
+
+- Full TypeScript support for type safety and better developer experience.
+- A modern, actively maintained library aligned with Paystack’s latest API updates.
+- Clean, intuitive APIs designed for ease of use.
+
+## Deprecation Notice
+
+Named import will be removed in version 4.0.0. Migrate to default import.
+Change
+
+```ts
+import { Paystack } from 'paystack-sdk';
+const Paystack = require('paystack-sdk').Paystack;
+```
+
+To
+
+```ts
+import Paystack from 'paystack-sdk';
+const Paystack = require('paystack-sdk');
+```
 
 ### Installation
 
@@ -19,28 +37,17 @@ For NPM
 
 For Typescript
 
-```typescript
-import {Paystack} from 'paystack-sdk';
-// or
+```ts
 import Paystack from 'paystack-sdk';
-
-const paystack = new Paystack("secret_key");
-```
-
-For Javscript
-
-```javascript
-const Paystack = require('paystack-sdk').Paystack;
-// or
-const Paystack = require('paystack-sdk');
 
 const paystack = new Paystack('secret_key');
 ```
 
-OR
+For Javscript
 
-```javascript
-const { Paystack } = require('paystack-sdk');
+```js
+const Paystack = require('paystack-sdk');
+
 const paystack = new Paystack('secret_key');
 ```
 

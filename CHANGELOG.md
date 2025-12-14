@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to Semantic Versioning.
 
+## 3.6.1 - 2025-12-14
+
+### Added
+
+- Remove deprecation notice. Add to readme
+
 ## [3.6.0] - 2025-12-14
 
 ### Added
