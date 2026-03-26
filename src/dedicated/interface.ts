@@ -32,6 +32,22 @@ export interface CreateDedicatedVirtualAccount {
   phone?: string;
 }
 
+export interface AssignDedicatedVirtualAccount {
+  email: string;
+  first_name: string;
+  last_name: string;
+  phone: string;
+  preferred_bank: string;
+  country: "NG" | "GH";
+  account_number?: string;
+  bvn?: string;
+  bank_code?: string;
+  subaccount?: string;
+  split_code?: string;
+}
+
+export interface DedicatedAccountAssignedResponse extends Response {}
+
 export interface ListDedicatedVirtualAccountsQueryParams {
   active: boolean;
   currency: string;
