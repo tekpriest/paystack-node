@@ -31,8 +31,13 @@ export class DedicatedAccount {
     return await this.http.post('/dedicated_account', JSON.stringify(data));
   }
 
-  async assign(data: AssignDedicatedVirtualAccount): Promise<DedicatedAccountAssignedResponse | BadRequest> {
-    return await this.http.post('/dedicated_account/assign', JSON.stringify(data));
+  async assign(
+    data: AssignDedicatedVirtualAccount,
+  ): Promise<DedicatedAccountAssignedResponse | BadRequest> {
+    return await this.http.post(
+      '/dedicated_account/assign',
+      JSON.stringify(data),
+    );
   }
 
   async list(

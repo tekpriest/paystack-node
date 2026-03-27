@@ -35,7 +35,7 @@ export type Country = {
   name: string;
   iso_code: string;
   default_currency_code: string;
-  integration_defaults: Record<string, any>;
+  integration_defaults: Record<string, unknown>;
   relationships: Relationship;
 };
 
