@@ -1,91 +1,50 @@
 # Paystack SDK
 
-#### Why Another [Paystack](https://paystack.com) Package?
+[![npm version](https://img.shields.io/npm/v/paystack-sdk)](https://www.npmjs.com/package/paystack-sdk)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178c6?logo=typescript)](https://typescriptlang.org)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-Existing Paystack libraries are either outdated, lack modern features, or fail to support TypeScript. This package addresses these gaps by providing:
+**Modern TypeScript SDK for the [Paystack](https://paystack.com) payments API.** Full type safety, Promise-based, covers 18+ API modules — transactions, transfers, customers, subscriptions, settlements, and more.
 
-- Full TypeScript support for type safety and better developer experience.
-- A modern, actively maintained library aligned with Paystack’s latest API updates.
-- Clean, intuitive APIs designed for ease of use.
+> Built because existing Paystack libraries were untyped, abandoned, or lagging behind the API. This is the one you install when you need reliability in production.
 
-## Deprecation Notice
+## Quick Start
 
-Named import will be removed in version 4.0.0. Migrate to default import.
-Change
-
-```ts
-import { Paystack } from 'paystack-sdk';
-const Paystack = require('paystack-sdk').Paystack;
+```bash
+npm install paystack-sdk
+# or
+yarn add paystack-sdk
 ```
-
-To
-
-```ts
-import Paystack from 'paystack-sdk';
-const Paystack = require('paystack-sdk');
-```
-
-### Installation
-
-For Yarn
-`yarn add paystack-sdk`
-
-For NPM
-`npm install paystack-sdk`
-
-### Usage
-
-For Typescript
 
 ```ts
 import Paystack from 'paystack-sdk';
 
-const paystack = new Paystack('secret_key');
+const paystack = new Paystack('sk_live_...');
+
+// Charge a card
+const charge = await paystack.charge.initialize({
+  email: 'customer@example.com',
+  amount: 500000, // NGN 5,000
+});
+
+// Verify a transaction
+const tx = await paystack.transaction.verify('tx_ref_abc123');
 ```
 
-For Javscript
+## Supported Modules
 
-```js
-const Paystack = require('paystack-sdk');
+| Module | Status | Module | Status |
+|--------|:---:|--------|:---:|
+| Transactions | ✅ | Transfers | ✅ |
+| Customers | ✅ | Transfer Recipients | ✅ |
+| Plans | ✅ | Subaccounts | ✅ |
+| Subscriptions | ✅ | Transaction Splits | ✅ |
+| Charge | ✅ | Settlements | ✅ |
+| Refunds | ✅ | Invoices | ✅ |
+| Verification | ✅ | Bulk Charges | ✅ |
+| Apple Pay | ✅ | Dedicated Virtual Accounts | ✅ |
+| Miscellaneous | ✅ | Transfers Control | ✅ |
 
-const paystack = new Paystack('secret_key');
-```
+## License
 
-All methods use promise meaning you can either use the `async...await` or `then...catch` or `try...catch`
-
-### Modules
-
-- [x] Charge
-- [x] Customers
-- [x] Plans
-- [x] Products
-- [x] Subscriptions
-- [x] Transactions
-- [x] Transfers
-- [x] Dedicated Virtual Accounts
-- [x] Apple Pay
-- [x] Subaccounts
-- [x] Transaction Splits
-- [x] Settlements
-- [x] Invoices
-- [x] Transfer Recipients
-- [x] Transfers Control
-- [x] Bulk Charges
-- [x] Refunds
-- [x] Verification
-- [x] Miscellaneous
-- [ ] Disputes
-- [ ] Control Panel
-- [ ] Terminal
-- [ ] Virtual Terminal
-- [ ] Direct Debit
-- [ ] Payment Pages
-- [ ] Payment Requests
-- [ ] Integration
-
-## CONTRIBUTING
-
-If you notice a missing function, or maybe a bug. Please feel free to submit
-a PR. I will take a look at it.
-You will need to fork the repo and create a PR against it with your changes.  
-Thank you :smile:
+MIT
