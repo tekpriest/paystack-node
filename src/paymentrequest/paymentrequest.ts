@@ -20,10 +20,7 @@ export class PaymentRequest {
   async create(
     data: CreatePaymentRequest,
   ): Promise<CreatePaymentRequestResponse | BadRequest> {
-    return await this.http.post(
-      '/paymentrequest',
-      JSON.stringify(data),
-    );
+    return await this.http.post('/paymentrequest', JSON.stringify(data));
   }
 
   async list(

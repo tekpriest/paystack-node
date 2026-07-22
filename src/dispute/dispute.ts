@@ -58,20 +58,16 @@ export class Dispute {
     id: string,
     uploadFilename: string,
   ): Promise<UploadUrlResponse | BadRequest> {
-    return await this.http.get(
-      `/dispute/${id}/upload_url`,
-      { params: { upload_filename: uploadFilename } },
-    );
+    return await this.http.get(`/dispute/${id}/upload_url`, {
+      params: { upload_filename: uploadFilename },
+    });
   }
 
   async resolve(
     id: string,
     data: ResolveDispute,
   ): Promise<FetchDisputeResponse | BadRequest> {
-    return await this.http.put(
-      `/dispute/${id}/resolve`,
-      JSON.stringify(data),
-    );
+    return await this.http.put(`/dispute/${id}/resolve`, JSON.stringify(data));
   }
 
   async export(

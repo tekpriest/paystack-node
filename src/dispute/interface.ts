@@ -6,7 +6,11 @@ export interface ListDisputesQueryParams {
   from?: Date;
   to?: Date;
   transaction?: string;
-  status?: 'awaiting-merchant-feedback' | 'awaiting-bank-feedback' | 'pending' | 'resolved';
+  status?:
+    | 'awaiting-merchant-feedback'
+    | 'awaiting-bank-feedback'
+    | 'pending'
+    | 'resolved';
 }
 
 export interface UpdateDispute {

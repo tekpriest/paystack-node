@@ -24,10 +24,7 @@ export class VirtualTerminal {
   async create(
     data: CreateVirtualTerminal,
   ): Promise<CreateVirtualTerminalResponse | BadRequest> {
-    return await this.http.post(
-      '/virtual_terminal',
-      JSON.stringify(data),
-    );
+    return await this.http.post('/virtual_terminal', JSON.stringify(data));
   }
 
   async list(
@@ -92,9 +89,8 @@ export class VirtualTerminal {
     code: string,
     data: RemoveSplitCode,
   ): Promise<Response | BadRequest> {
-    return await this.http.delete(
-      `/virtual_terminal/${code}/split_code`,
-      { data: JSON.stringify(data) },
-    );
+    return await this.http.delete(`/virtual_terminal/${code}/split_code`, {
+      data: JSON.stringify(data),
+    });
   }
 }

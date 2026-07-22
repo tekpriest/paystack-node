@@ -35,9 +35,7 @@ export class Terminal {
     terminalId: string,
     eventId: string,
   ): Promise<FetchEventStatusResponse | BadRequest> {
-    return await this.http.get(
-      `/terminal/${terminalId}/event/${eventId}`,
-    );
+    return await this.http.get(`/terminal/${terminalId}/event/${eventId}`);
   }
 
   async fetchStatus(
@@ -54,9 +52,7 @@ export class Terminal {
     });
   }
 
-  async fetch(
-    terminalId: string,
-  ): Promise<FetchTerminalResponse | BadRequest> {
+  async fetch(terminalId: string): Promise<FetchTerminalResponse | BadRequest> {
     return await this.http.get(`/terminal/${terminalId}`);
   }
 
@@ -64,10 +60,7 @@ export class Terminal {
     terminalId: string,
     data: UpdateTerminal,
   ): Promise<Response | BadRequest> {
-    return await this.http.put(
-      `/terminal/${terminalId}`,
-      JSON.stringify(data),
-    );
+    return await this.http.put(`/terminal/${terminalId}`, JSON.stringify(data));
   }
 
   async commission(
