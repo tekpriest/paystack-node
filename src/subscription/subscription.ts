@@ -1,4 +1,5 @@
 import { HttpClient } from '../http';
+import { BadRequest } from '../interface';
 import {
   CreateSubscription,
   EnableOrDisableSubscription,
@@ -9,11 +10,6 @@ import {
   Response,
   SubscriptionCreated,
 } from './interface';
-
-interface BadRequest {
-  status: boolean;
-  message: string;
-}
 
 export class Subscription {
   http: HttpClient;

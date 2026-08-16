@@ -1,4 +1,5 @@
 import { HttpClient } from '../http';
+import { BadRequest } from '../interface';
 import {
   AssignDedicatedVirtualAccount,
   CreateDedicatedVirtualAccount,
@@ -13,11 +14,6 @@ import {
   SplitDedicatedAccountTransaction,
   SplitDedicatedAccountTransactionResponse,
 } from './interface';
-
-interface BadRequest {
-  status: boolean;
-  message: string;
-}
 
 export class DedicatedAccount {
   http: HttpClient;

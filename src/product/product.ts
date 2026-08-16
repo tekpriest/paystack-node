@@ -1,4 +1,5 @@
 import { HttpClient } from '../http';
+import { BadRequest } from '../interface';
 import {
   CreateProduct,
   FetchProduct,
@@ -7,11 +8,6 @@ import {
   ProductCreated,
   UpdateProduct,
 } from './interface';
-
-interface BadRequest {
-  status: boolean;
-  message: string;
-}
 
 /**
  * @class Product

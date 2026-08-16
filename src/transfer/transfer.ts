@@ -1,4 +1,5 @@
 import { HttpClient } from '../http';
+import { BadRequest } from '../interface';
 import { Control } from './control';
 import {
   BulkTransferInitiated,
@@ -11,11 +12,6 @@ import {
   TransferInitiated,
   VerifyTransfer,
 } from './interface';
-
-interface BadRequest {
-  status: boolean;
-  message: string;
-}
 
 export class Transfer {
   private http: HttpClient;

@@ -1,4 +1,5 @@
 import { HttpClient } from '../http';
+import { BadRequest } from '../interface';
 import {
   ChargeCreatedWithAddressResponse,
   ChargeCreatedWithBirthdayResponse,
@@ -16,11 +17,6 @@ import {
   SubmitPhone,
   SubmitPIN,
 } from './interface';
-
-interface BadRequest {
-  status: boolean;
-  message: string;
-}
 
 export class Charge {
   private http: HttpClient;

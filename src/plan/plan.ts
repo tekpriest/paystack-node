@@ -1,16 +1,11 @@
 import { HttpClient } from '../http';
+import { BadRequest } from '../interface';
 import {
   CreatePlan,
   ListPlanQueryParams,
   PlanResponse,
   UpdatePlan,
 } from './interface';
-
-interface BadRequest {
-  status: boolean;
-  message: string;
-  data: null;
-}
 
 /**
  * ## Plans

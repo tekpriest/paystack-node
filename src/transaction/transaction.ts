@@ -1,4 +1,5 @@
 import { HttpClient } from '../http';
+import { BadRequest } from '../interface';
 import {
   CheckAuthorizationResponse,
   ExportTransaction,
@@ -15,12 +16,6 @@ import {
   PartialDebit,
   TransactionInitialized,
 } from './interface';
-
-interface BadRequest {
-  status: boolean;
-  message: string;
-  data: null;
-}
 
 /**
  * # Tansactions
