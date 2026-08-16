@@ -58,7 +58,7 @@ export class Transaction {
   }
 
   async fetch(id: string): Promise<GetTransactionResponse | BadRequest> {
-    return await this.http.get(`/transaction/:${id}`);
+    return await this.http.get(`/transaction/${id}`);
   }
 
   async chargeAuthorization(
