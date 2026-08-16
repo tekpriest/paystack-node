@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 This project adheres to Semantic Versioning.
 
-## [Unreleased]
+## [4.0.0] - 2026-08-16
 
 ### Changed
 
@@ -64,10 +64,3 @@ This project adheres to Semantic Versioning.
 - 🐞 FIX(main entry file):
 - 📦 NEW(set up sdk):
 - Initial commit
-
-## [Unreleased]
-- Expose `bulkcharge` module
-- Add `verification` module
-
-### Added
-- Automatic publish
