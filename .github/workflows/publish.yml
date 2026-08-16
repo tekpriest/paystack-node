@@ -17,7 +17,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v4
         with:
-          node-version: '18.x'
+          node-version: '20.x'
           registry-url: 'https://registry.npmjs.org'
           cache: 'npm'
 
@@ -35,13 +35,13 @@ jobs:
         run: |
           PACKAGE_NAME=$(node -p "require('./package.json').name")
           CURRENT_VERSION=$(node -p "require('./package.json').version")
-          NPM_VERSION=$(npm view $PACKAGE_NAME) versions --json
+          NPM_VERSIONS=$(npm view "$PACKAGE_NAME" versions --json)
 
-          if $NPM_VERSION | grep -q "\"$CURRENT_VERSION\""; then
-            echo "version_exists=true" >> $GITHUB_OUTPUT
+          if echo "$NPM_VERSIONS" | grep -q "\"$CURRENT_VERSION\""; then
+            echo "version_exists=true" >> "$GITHUB_OUTPUT"
             echo "Version $CURRENT_VERSION already exists on npm"
           else
-            echo "version_exists=false" >> $GITHUB_OUTPUT
+            echo "version_exists=false" >> "$GITHUB_OUTPUT"
             echo "Version $CURRENT_VERSION is new and will be published"
           fi
 
@@ -53,12 +53,12 @@ jobs:
 
       - name: Get package version
         id: package-version
-        run: echo "version=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
+        run: echo "version=$(jq -r .version package.json)" >> "$GITHUB_OUTPUT"
 
       - name: Create release
         if: steps.check-version.outputs.version_exists == 'false'
         uses: softprops/action-gh-release@v2
         with:
           generate_release_notes: true
-          tag_name: v${{ steps.check-version.outputs.version }}
-          release_name: Release ${{ steps.check-version.outputs.version }}
+          tag_name: ${{ steps.package-version.outputs.version }}
+          release_name: Release ${{ steps.package-version.outputs.version }}
