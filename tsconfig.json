@@ -9,9 +9,7 @@
 		"outDir": "./dist",
 		"esModuleInterop": true,
 		"strict": true,
-		"checkJs": true,
 		"allowSyntheticDefaultImports": true,
-		"strictNullChecks": false,
 		"types": ["jest", "node"],
 		"skipLibCheck": true
 	},
