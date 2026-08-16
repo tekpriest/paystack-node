@@ -1,4 +1,4 @@
-import { Axios } from 'axios';
+import { HttpClient } from '../http';
 import {
   CreatePlan,
   ListPlanQueryParams,
@@ -19,8 +19,8 @@ interface BadRequest {
  * @class Plan
  */
 export class Plan {
-  private http: Axios;
-  constructor(http: Axios) {
+  private http: HttpClient;
+  constructor(http: HttpClient) {
     this.http = http;
   }
   /**

@@ -1,4 +1,4 @@
-import { Axios } from 'axios';
+import { HttpClient } from '../http';
 import { BadRequest, Response } from '../interface';
 import { ListCustomersResponse } from './interface';
 import {
@@ -17,8 +17,8 @@ import {
  * customers on your integration
  */
 export class Customer {
-  private http: Axios;
-  constructor(http: Axios) {
+  private http: HttpClient;
+  constructor(http: HttpClient) {
     this.http = http;
   }
 

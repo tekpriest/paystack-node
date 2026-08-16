@@ -1,4 +1,4 @@
-import { Axios } from 'axios';
+import { HttpClient } from '../http';
 import {
   ChargeCreatedWithAddressResponse,
   ChargeCreatedWithBirthdayResponse,
@@ -23,8 +23,8 @@ interface BadRequest {
 }
 
 export class Charge {
-  private http: Axios;
-  constructor(http: Axios) {
+  private http: HttpClient;
+  constructor(http: HttpClient) {
     this.http = http;
   }
   async create(

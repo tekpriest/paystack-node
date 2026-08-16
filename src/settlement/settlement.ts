@@ -1,4 +1,4 @@
-import { Axios } from 'axios';
+import { HttpClient } from '../http';
 import { BadRequest, QueryParams } from '../interface';
 import {
   ListSettlementsResponse,
@@ -7,8 +7,8 @@ import {
 } from './interface';
 
 export class Settlement {
-  private http: Axios;
-  constructor(http: Axios) {
+  private http: HttpClient;
+  constructor(http: HttpClient) {
     this.http = http;
   }
 

@@ -1,4 +1,4 @@
-import { Axios } from 'axios';
+import { HttpClient } from '../http';
 import { BadRequest } from '../interface';
 import {
   BanksResponse,
@@ -8,8 +8,8 @@ import {
 } from './interface';
 
 export class Misc {
-  private http: Axios;
-  constructor(http: Axios) {
+  private http: HttpClient;
+  constructor(http: HttpClient) {
     this.http = http;
   }
 

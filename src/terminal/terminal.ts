@@ -1,4 +1,4 @@
-import { Axios } from 'axios';
+import { HttpClient } from '../http';
 import { BadRequest, Response } from '../interface';
 import {
   CommissionDevice,
@@ -16,8 +16,8 @@ import {
 } from './interface';
 
 export class Terminal {
-  private http: Axios;
-  constructor(http: Axios) {
+  private http: HttpClient;
+  constructor(http: HttpClient) {
     this.http = http;
   }
 

@@ -1,4 +1,4 @@
-import { Axios } from 'axios';
+import { HttpClient } from '../http';
 import { Control } from './control';
 import {
   BulkTransferInitiated,
@@ -18,9 +18,9 @@ interface BadRequest {
 }
 
 export class Transfer {
-  private http: Axios;
+  private http: HttpClient;
   public control: Control;
-  constructor(http: Axios) {
+  constructor(http: HttpClient) {
     this.http = http;
     this.control = new Control(http);
   }

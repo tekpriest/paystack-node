@@ -1,4 +1,4 @@
-import { Axios } from 'axios';
+import { HttpClient } from '../http';
 import {
   AssignDedicatedVirtualAccount,
   CreateDedicatedVirtualAccount,
@@ -20,8 +20,8 @@ interface BadRequest {
 }
 
 export class DedicatedAccount {
-  http: Axios;
-  constructor(http: Axios) {
+  http: HttpClient;
+  constructor(http: HttpClient) {
     this.http = http;
   }
 

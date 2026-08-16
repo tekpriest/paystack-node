@@ -1,4 +1,4 @@
-import { Axios } from 'axios';
+import { HttpClient } from '../http';
 import {
   CreateSubscription,
   EnableOrDisableSubscription,
@@ -16,8 +16,8 @@ interface BadRequest {
 }
 
 export class Subscription {
-  http: Axios;
-  constructor(http: Axios) {
+  http: HttpClient;
+  constructor(http: HttpClient) {
     this.http = http;
   }
 

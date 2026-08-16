@@ -1,4 +1,4 @@
-import { Axios } from 'axios';
+import { HttpClient } from '../http';
 import { BadRequest, Response } from '../interface';
 import {
   CheckBalanceResponse,
@@ -7,8 +7,8 @@ import {
 } from './interface';
 
 export class Control {
-  http: Axios;
-  constructor(http: Axios) {
+  http: HttpClient;
+  constructor(http: HttpClient) {
     this.http = http;
   }
 

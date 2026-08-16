@@ -1,4 +1,4 @@
-import { Axios } from 'axios';
+import { HttpClient } from '../http';
 import {
   CreateProduct,
   FetchProduct,
@@ -20,8 +20,8 @@ interface BadRequest {
  * on your integration
  */
 export class Product {
-  http: Axios;
-  constructor(http: Axios) {
+  http: HttpClient;
+  constructor(http: HttpClient) {
     this.http = http;
   }
 

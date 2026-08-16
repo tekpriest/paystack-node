@@ -1,4 +1,4 @@
-import { Axios } from 'axios';
+import { HttpClient } from '../http';
 import { BadRequest } from '../interface';
 import {
   CreateSplit,
@@ -18,8 +18,8 @@ import {
  * their payout account, and one or more Subaccounts.
  */
 export class TransactionSplit {
-  private http: Axios;
-  constructor(http: Axios) {
+  private http: HttpClient;
+  constructor(http: HttpClient) {
     this.http = http;
   }
 

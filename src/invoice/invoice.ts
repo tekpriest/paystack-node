@@ -1,4 +1,4 @@
-import { Axios } from 'axios';
+import { HttpClient } from '../http';
 import { BadRequest, Response } from '../interface';
 import {
   CreateInvoice,
@@ -11,8 +11,8 @@ import {
 } from './interface';
 
 export class Invoice {
-  private http: Axios;
-  constructor(http: Axios) {
+  private http: HttpClient;
+  constructor(http: HttpClient) {
     this.http = http;
   }
 

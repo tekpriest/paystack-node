@@ -1,4 +1,4 @@
-import { Axios } from 'axios';
+import { HttpClient } from '../http';
 import { BadRequest, QueryParams, Response } from '../interface';
 import {
   CreateRecipient,
@@ -9,8 +9,8 @@ import {
 } from './interface';
 
 export class Recipient {
-  private http: Axios;
-  constructor(http: Axios) {
+  private http: HttpClient;
+  constructor(http: HttpClient) {
     this.http = http;
   }
 

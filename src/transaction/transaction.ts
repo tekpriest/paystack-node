@@ -1,4 +1,4 @@
-import { Axios } from 'axios';
+import { HttpClient } from '../http';
 import {
   CheckAuthorizationResponse,
   ExportTransaction,
@@ -28,8 +28,8 @@ interface BadRequest {
  * payments on your integration
  */
 export class Transaction {
-  private http: Axios;
-  constructor(http: Axios) {
+  private http: HttpClient;
+  constructor(http: HttpClient) {
     this.http = http;
   }
   /**

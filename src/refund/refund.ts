@@ -1,4 +1,4 @@
-import { Axios } from 'axios';
+import { HttpClient } from '../http';
 import {
   FetchRefundResponse,
   CreateRefund,
@@ -11,8 +11,8 @@ import {
 import { BadRequest } from '../interface';
 
 export class Refund {
-  private http: Axios;
-  constructor(http: Axios) {
+  private http: HttpClient;
+  constructor(http: HttpClient) {
     this.http = http;
   }
 

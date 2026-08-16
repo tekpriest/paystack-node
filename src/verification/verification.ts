@@ -1,4 +1,4 @@
-import { Axios } from 'axios';
+import { HttpClient } from '../http';
 import {
   ResolveAccount,
   AccountResolved,
@@ -13,8 +13,8 @@ import { BadRequest } from '../interface';
  * The Verification API allows you perform KYC processes.
  */
 export class Verification {
-  private http: Axios;
-  constructor(http: Axios) {
+  private http: HttpClient;
+  constructor(http: HttpClient) {
     this.http = http;
   }
 

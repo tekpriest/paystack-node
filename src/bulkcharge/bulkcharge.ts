@@ -1,4 +1,4 @@
-import { Axios } from 'axios';
+import { HttpClient } from '../http';
 import { BadRequest, QueryParams, Response } from '../interface';
 import {
   FetchBulkBatchChargeResponse,
@@ -10,8 +10,8 @@ import {
 } from './interface';
 
 export class BulkCharge {
-  http: Axios;
-  constructor(http: Axios) {
+  http: HttpClient;
+  constructor(http: HttpClient) {
     this.http = http;
   }
 
