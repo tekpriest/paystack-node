@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 This project adheres to Semantic Versioning.
 
+## [Unreleased]
+
+### Changed
+
+- Replace `axios` with the built-in `fetch` HTTP client (`src/http.ts`). The
+  `Paystack` class now creates its shared client via `createHttpClient(key)`
+  instead of `axios.create(...)`, and all module classes depend on the new
+  `HttpClient` interface rather than `Axios`.
+
+### Removed
+
+- Drop the `axios` runtime dependency — the SDK now ships with **zero** runtime
+  dependencies.
+
+### Breaking changes
+
+- The minimum supported Node.js version is now **18** (global `fetch`).
+- Non-2xx responses now reject with `PaystackHttpError` (which exposes `.status`
+  and the parsed `.body`) instead of `AxiosError`.
+
 ## 3.6.1 - 2025-12-14
 
 ### Added
