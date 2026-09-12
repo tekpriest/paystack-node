@@ -74,6 +74,29 @@ export interface InitializeTransaction {
    * `account` or `subaccount` (defaults to `account`)
    */
   bearer?: string;
+
+  /**
+   * A dynamic split configuration for this transaction.
+   * Use this to create splits on the fly without pre-creating a split.
+   */
+  split?: {
+    /**
+     * The type of split. Can be `flat` or `percentage`
+     */
+    type: "flat" | "percentage";
+    /**
+     * An array of subaccount objects with subaccount code and share.
+     * @example [{ "subaccount": "ACCT_pwwualwty4nhq9d", "share": 6000 }]
+     */
+    subaccounts: { subaccount: string; share: number }[];
+    /**
+     * Unique reference for the split
+     */
+    reference?: string;
+  } & (
+    | { bearer_type: "all" | "all-proportional" | "account" }
+    | { bearer_type: "subaccount"; bearer_subaccount: string }
+  );
 }
 
 export interface Response {
