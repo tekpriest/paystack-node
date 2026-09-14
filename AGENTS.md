@@ -72,7 +72,7 @@ Classic **facade pattern**:
   | `verification`         | `src/verification/`    | `Verification`                                                                                                                   |
   | `virtualTerminal`      | `src/virtualterminal/` | `VirtualTerminal`                                                                                                                |
 
-- `src/index.ts` is the package entry point: `export default Paystack`.
+- `src/index.ts` is the package entry point: `export = Paystack` (CommonJS single-value export, so `import Paystack from 'paystack-sdk'` works from both CJS and ESM/`nodenext` consumers).
 
 ## Code Organization and Conventions
 
@@ -124,7 +124,7 @@ Shared types live in `src/interface.ts`:
 
 ## Deployment / Publishing
 
-- Publishing ships **only `dist/**/*`** (package.json `files` field); `main` is `dist/index.js`. There is no explicit `types` field — TypeScript resolves types via the adjacent `dist/index.d.ts`.
+- Publishing ships **only `dist/**/*`** (package.json `files` field); `main` is `dist/index.js`. `package.json` also declares explicit `types` and an `exports` map (`".": { types, default }`) pointing at `dist/index.d.ts` / `dist/index.js`. Note the `exports` map blocks deep imports (e.g. `paystack-sdk/dist/...`); only the package root is public.
 - Release flow (intended): bump version → `preversion` formats + lints → `postversion` pushes commit and tags → `npm publish` runs `prepare` (build) and `prepublishOnly` (lint).
 - **CI:** `.github/workflows/publish.yml` runs on push to `main`: `npm ci` → `npm test` → `npm run build` → version-exists check → `npm publish --access public` (requires the `NPM_TOKEN` secret) → create a GitHub release.
 

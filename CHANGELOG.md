@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 This project adheres to Semantic Versioning.
 
+## [4.1.0] - 2026-09-14
+
+### Fixed
+
+- Make the SDK importable consistently from CommonJS and ESM/`nodenext`
+  projects. The entry point now uses `export = Paystack`, so
+  `import Paystack from 'paystack-sdk'` resolves to the constructor instead of a
+  `{ default: Paystack }` wrapper. Previously this caused
+  `TS2351: This expression is not constructable` under `nodenext`, and
+  `TypeError: undefined is not a constructor` at runtime when the
+  `PaystackModule.default(...)` workaround was used (e.g. in Docker).
+
+### Changed
+
+- `package.json` now declares explicit `types` and `exports` fields. The
+  `exports` map exposes only the package root, so deep imports such as
+  `paystack-sdk/dist/...` are no longer resolvable.
+
 ## [4.0.0] - 2026-08-16
 
 ### Changed
