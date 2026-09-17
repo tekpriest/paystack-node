@@ -83,7 +83,7 @@ export interface InitializeTransaction {
     /**
      * The type of split. Can be `flat` or `percentage`
      */
-    type: "flat" | "percentage";
+    type: 'flat' | 'percentage';
     /**
      * An array of subaccount objects with subaccount code and share.
      * @example [{ "subaccount": "ACCT_pwwualwty4nhq9d", "share": 6000 }]
@@ -94,8 +94,8 @@ export interface InitializeTransaction {
      */
     reference?: string;
   } & (
-    | { bearer_type: "all" | "all-proportional" | "account" }
-    | { bearer_type: "subaccount"; bearer_subaccount: string }
+    | { bearer_type: 'all' | 'all-proportional' | 'account' }
+    | { bearer_type: 'subaccount'; bearer_subaccount: string }
   );
 }
 
