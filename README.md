@@ -6,7 +6,7 @@
 
 **Modern TypeScript SDK for the [Paystack](https://paystack.com) payments API.** Full type safety, Promise-based, covers 18+ API modules — transactions, transfers, customers, subscriptions, settlements, and more.
 
-> Built because existing Paystack libraries were untyped, abandoned, or lagging behind the API. This is the one you install when you need reliability in production.
+> Built because existing Paystack libraries were untyped, abandoned, or lagging behind the API.
 
 ## Quick Start
 
